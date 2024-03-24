@@ -1,0 +1,12 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Actualizar Post{% endblock title %}Crear Post
+
+{% block content %}
+    <form action="{% url 'blog:update' post.id %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Editar">
+    </form>
+    <a href="{% url 'blog:home' %}">Volver atras</a>
+{% endblock content %}
