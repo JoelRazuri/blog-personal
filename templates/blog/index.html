@@ -5,8 +5,13 @@
 {% block content %}
     <main>
         <div class="login-register">
-            <p><a href="{% url 'accounts:login' %}">Iniciar sesión</a></p>
-            <p><a href="{% url 'accounts:register' %}">Registrarse</a></p>
+            {% if not user.authenticated %}
+                <p><a href="{% url 'accounts:login' %}">Iniciar sesión</a></p>
+                <p><a href="{% url 'accounts:register' %}">Registrarse</a></p>
+            {% endif %}
+            {% if user.authenticated %}
+                <p><a href="{% url 'accounts:logout' %}">Cerrar sesión</a></p> 
+            {% endif %}    
         </div>
         <div>
             <p><a href="{% url 'blog:create' %}">Crear post</a></p>
