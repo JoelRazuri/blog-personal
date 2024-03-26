@@ -11,12 +11,12 @@ class RegisterView(CreateView):
 
 
 
-class LoginView(LoginView):
+class LoginUserView(LoginView):
     form_class = AuthenticationForm
     template_name = 'accounts/login.html'
-    # success_url = reverse_lazy('blog:home')
+    next_page = 'blog:home'
 
 
 
-# class LogoutUsuario(LogoutView):
-#     next_page = '/blog/'
+class LogoutUserView(LogoutView):
+    next_page = 'blog:home'

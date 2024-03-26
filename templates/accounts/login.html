@@ -4,7 +4,7 @@
 {% block title %}Logueo de usuario{% endblock title %}
 
 {% block content %}
-<form action="" method="POST">
+<form action="{% url 'accounts:login' %}" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Iniciar Sesión</button>
