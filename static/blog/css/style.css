@@ -20,3 +20,21 @@ form p {
 a {
     padding: 10px;
 }
+
+
+.login-register {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5em;
+}
+
+.content-logout-create {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5em;
+}
+
+
+.card {
+    margin-bottom: 2em;
+}

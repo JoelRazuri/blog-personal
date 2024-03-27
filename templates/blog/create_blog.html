@@ -3,7 +3,11 @@
 {% block title %}Crear Post{% endblock title %}Crear Post
 
 {% block content %}
-    <form action="{% url 'blog:create' %}" method="POST">
+    {% comment %} 
+        Con el atributo 'enctype="multipart/form-data"' Debemos indicar en el formulario que vamos a subir un archivo de 
+        este modo, o de lo contrario recibiremos un error de validación diciéndonos que el campo está vacío. 
+    {% endcomment %}
+    <form action="{% url 'blog:create' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Crear">
