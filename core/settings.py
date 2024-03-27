@@ -119,3 +119,6 @@ MEDIA_ROOT =  BASE_DIR / "media_root"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Usuario personalizado, usando de base el modelo 'User' que proporciona Django
+AUTH_USER_MODEL = 'accounts.CustomUser'
