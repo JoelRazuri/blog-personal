@@ -11,22 +11,26 @@ class HomeBlogView(ListView):
 
 
 
-class CreateBlogView(CreateView):
+class CreatePostView(CreateView):
     model = Post
     form_class = PostForm
     template_name = 'blog/create_blog.html'
     success_url = reverse_lazy('blog:home')
 
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 
-class DetailBlogView(DetailView):
+
+class DetailPostView(DetailView):
     model = Post
     template_name = 'blog/detail_blog.html'
     context_object_name = 'post'
 
 
 
-class UpdateBlogView(UpdateView):
+class UpdatePostView(UpdateView):
     model = Post
     form_class = PostForm
     template_name = 'blog/update_blog.html'
@@ -35,9 +39,8 @@ class UpdateBlogView(UpdateView):
 
 
 
-class DeleteBlogView(DeleteView):
+class DeletePostView(DeleteView):
     model = Post
     template_name = 'blog/delete_blog.html'
     context_object_name = 'post'
     success_url = reverse_lazy('blog:home')
-    
