@@ -8,6 +8,7 @@ urlpatterns = [
     path('blog/', include('blog.urls', namespace='blog')),
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('comments/', include('comments.urls', namespace='comments')),
+    path("__reload__/", include("django_browser_reload.urls"))
 ]
 
 
