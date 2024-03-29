@@ -5,9 +5,37 @@
 {% block title2 %}<h1>Crea tu cuenta</h1>{% endblock title2 %}
 
 {% block content %}
-<form action=""{% url 'accounts:register' %}"" method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Registrarse">
-</form>    
+
+<div class="min-h-screen flex flex-col items-center justify-center">
+    <form action="{% url 'accounts:register' %}" method="POST">
+        {% csrf_token %}
+        <div>
+            <label for="id_username">Usuario</label>
+            {{ form.username }}
+        </div>
+        <div>
+            <label for="id_first_name">Nombre</label>
+            {{ form.first_name }} 
+        </div>
+        <div>
+            <label for="id_last_name">Apellido</label>
+            {{ form.last_name }}
+            
+        </div>
+        <div>
+            <label for="id_email">Correo electronico</label>
+            {{ form.email }}
+        </div>
+        <div>
+            <label for="id_password1">Contrasena</label>
+            {{ form.password1 }}
+        </div>
+        <div>
+            <label for="id_password2">Repetir contrasena</label>
+            {{ form.password2 }}
+        </div>
+        <input type="submit" value="Registrarse">
+    </form>   
+</div>
+
 {% endblock content %}

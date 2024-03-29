@@ -4,7 +4,10 @@ from django import forms
 
 
 class CustomUserCreationForm(UserCreationForm):
-    email = forms.EmailField(required=True)
+    email = forms.EmailField(
+        required=True, 
+        widget=forms.EmailInput(attrs={'class': 'form-control'})
+        )
 
     class Meta(UserCreationForm.Meta):
         model = CustomUser
