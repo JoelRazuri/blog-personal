@@ -1,8 +1,8 @@
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, CustomAuthenticationForm
+
 
 
 class RegisterView(CreateView):
@@ -13,10 +13,9 @@ class RegisterView(CreateView):
 
 
 class LoginUserView(LoginView):
-    form_class = AuthenticationForm
+    form_class = CustomAuthenticationForm
     template_name = 'accounts/login.html'
     next_page = 'blog:home'
-
 
 
 class LogoutUserView(LogoutView):
