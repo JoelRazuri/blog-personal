@@ -3,27 +3,24 @@
 {% block title %}Iniciar Sesión{% endblock title %} 
 
 {% block content %}
-  <div class="min-h-screen flex flex-col items-center justify-center">
-    <div class="">
-<<<<<<< HEAD
-        <div class="">
-            <h2 class="">Ingresa tu cuenta</h2>
-=======
-      <h2 class="">Ingresa tu cuenta</h2>
+  <div class="min-h-screen flex flex-col">
+    <div class="w-screen py-32 flex justify-center">
+      <h2 class="font-bold text-3xl">Ingresa tu cuenta</h2>
     </div>
-    <div>
+    <div class="p-10">
       <form action="{% url 'accounts:login' %}" method="POST">
         {% csrf_token %}
-        <div>
-          <label for="id_username">Usuario</label>
-          {{ form.username }}
->>>>>>> dc5337913ee9d669074a877129f206f17cc25cb8
+        <div class="flex flex-col mb-6 p-12 items-center">
+          <div class="mb-6">
+            {{ form.username }}
+          </div>
+          <div>
+            {{ form.password }}
+          </div>
         </div>
-        <div>
-          <label for="id_password">Contrasena</label>
-          {{ form.password }}
+        <div class="flex justify-center">
+          <button class="bg-red-400 hover:bg-red-500 text-white font-semibold py-3 px-14 shadow-lg shadow-gray-400" type="submit">Iniciar Sesión</button>
         </div>
-        <button type="submit" class="">Iniciar Sesión</button>
       </form>
     </div>
   </div>
