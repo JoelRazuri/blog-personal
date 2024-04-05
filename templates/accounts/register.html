@@ -3,37 +3,39 @@
 {% block title %}Registrarse{% endblock title %}
 
 {% block content %}
-<div class="min-h-screen flex flex-col">
-  <div class="w-screen pt-28 mb-6 flex justify-center">
-    <h2 class="font-bold text-3xl">Crea tu cuenta</h2>
+<main class="bg-red-50">
+  <div class="min-h-screen flex flex-col">
+    <div class="w-screen pt-28 mb-6 flex justify-center">
+      <h2 class="font-bold text-3xl">Crea tu cuenta</h2>
+    </div>
+    <div class="p-10">
+      <form action="{% url 'accounts:register' %}" method="POST">
+        {% csrf_token %}
+        <div class="flex flex-col mb-6 p-9 items-center">
+          <div class="mb-6">
+            {{ form.username }}
+          </div>
+          <div class="mb-6">
+            {{ form.first_name }} 
+          </div>
+          <div class="mb-6">
+            {{ form.last_name }}
+          </div>
+          <div class="mb-6">
+            {{ form.email }}
+          </div>
+          <div class="mb-6">
+            {{ form.password1 }}
+          </div>
+          <div class="mb-6">
+            {{ form.password2 }}
+          </div>
+        </div>
+        <div class="flex justify-center">
+          <button class="bg-red-400 hover:bg-red-500 text-white font-semibold py-3 px-14 shadow-lg shadow-gray-400" type="submit">Crear cuenta</button>
+        </div>
+      </form>  
+    </div>
   </div>
-  <div class="p-10">
-    <form action="{% url 'accounts:register' %}" method="POST">
-      {% csrf_token %}
-      <div class="flex flex-col mb-6 p-9 items-center">
-        <div class="mb-6">
-          {{ form.username }}
-        </div>
-        <div class="mb-6">
-          {{ form.first_name }} 
-        </div>
-        <div class="mb-6">
-          {{ form.last_name }}
-        </div>
-        <div class="mb-6">
-          {{ form.email }}
-        </div>
-        <div class="mb-6">
-          {{ form.password1 }}
-        </div>
-        <div class="mb-6">
-          {{ form.password2 }}
-        </div>
-      </div>
-      <div class="flex justify-center">
-        <button class="bg-red-400 hover:bg-red-500 text-white font-semibold py-3 px-14 shadow-lg shadow-gray-400" type="submit">Crear cuenta</button>
-      </div>
-    </form>  
-  </div>
-</div>
+</main>
 {% endblock content %}

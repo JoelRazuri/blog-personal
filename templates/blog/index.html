@@ -3,26 +3,9 @@
 {% block title %}Blog{% endblock title %}
 
 {% block content %}
-    <main>
-        {% if user.is_authenticated %}<h2>Bienvenido {{user.username}}</h2>{% endif %}
-        <div class="login-register">
-            {% if not user.is_authenticated %}
-                <p><a href="{% url 'accounts:login' %}">Iniciar sesión</a></p>
-                <p><a href="{% url 'accounts:register' %}">Registrarse</a></p>
-            {% endif %}
-
-            {% if user.is_authenticated %}
-                <div class="content-logout-create">
-                    <p><a href="{% url 'blog:create' %}">Crear post</a></p> 
-                    <form action="{% url 'accounts:logout' %}" method="post">
-                        {% csrf_token %}
-                        <input type="submit" value="Cerrar sesión">
-                    </form>
-                </div>
-            {% endif %}    
-        </div>
+    <main class="min-h-[81.3vh]">
         <ul>
-            {% for post in posts  %}
+            {% for post in posts %}
             <div class="card">
                 <img src="{{ post.image.url }}" alt="imagen" width="250px" heigth="250px">
                 <li>{{ post.title }}</li>
