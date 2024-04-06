@@ -1,4 +1,4 @@
-from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
+from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView, TemplateView
 from django.urls import reverse_lazy
 from .models import Post
 from .forms import PostForm
@@ -44,3 +44,7 @@ class DeletePostView(DeleteView):
     template_name = 'blog/delete_blog.html'
     context_object_name = 'post'
     success_url = reverse_lazy('blog:home')
+
+
+class Error404View(TemplateView):
+    template_name = 'layouts/error_404.html'
