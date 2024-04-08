@@ -1,13 +1,22 @@
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView, TemplateView
 from django.urls import reverse_lazy
-from .models import Post
 from .forms import PostForm
+from .models import Post
 
 
 class HomeBlogView(ListView):
     model = Post
     template_name = 'blog/index.html'
-    context_object_name = 'posts'
+    context_object_name = 'posts'  
+    paginate_by = 8 
+
+    def get_queryset(self):
+        return Post.objects.order_by('-id')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filter'] = Post.objects.order_by('-id')[:6]
+        return context
 
 
 
