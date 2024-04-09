@@ -3,16 +3,84 @@
 {% block title %}Detalle del Post{% endblock title %}Blog
 
 {% block content %}
-    <main class="min-h-[84.7vh]">
-        <ul> 
-            <img src="{{ post.image.url }}" alt="imagen" width="350px" heigth="350px">
-            <li>{{ post.title }}</li>
-            <li>{{ post.content }}</li>
-            <li>Autor: {{ post.author }}</li>
-            <li>Fecha de publicación: {{ post.created_date|date:'d M Y' }}</li>      
-        </ul>
-        <div>
-            <p><a href="{% url 'blog:home' %}">Volver atras</a></p>
+{% load static %}
+    <main class="min-h-[84.8vh]">
+        <div class="px-10 py-5">
+            <h2 class="font-semibold text-slate-900 text-6xl py-4 mb-2">{{ post.title }}</h2>
+            <div class="flex">
+                <img src="{% static 'blog/img/perfil.jpg' %}" alt="foto" width="15" class="mr-3 rounded-md">
+                <p>{{ post.author }} <span class="text-gray-500">| {{ post.created_date }}</span></p>
+            </div>
         </div>
+
+        <section class="flex">
+            <article class="w-[75%] flex flex-col">
+                <section class="px-10">
+                    <img src="{{ post.image.url }}" alt="foto del post" class=" h-[40em] w-full">
+                    <p class="py-8">{{ post.content }}</p>
+                    <div class="">
+                        <hr class=" border-red-400">
+                    </div>
+                    <p class="py-7">
+                        <span class="text-xl">Compartir </span>
+                        <a href="">Facebook</a>
+                        <a href="">Twitter</a>
+                        <a href="">Instagram</a>
+                    </p>
+                </section>
+
+               <section class="px-10">
+                    <h2 class="py-4 font-semibold text-4xl">Más Posts</h2>
+                    <div class="flex">
+                        {% for related_post in related_posts  %}
+                        <a href="{% url 'blog:detail' related_post.id %}">
+                            <article class="bg-white w-[300px] h-[420px] flex flex-col items-center justify-between shadow-xl mb-8 mr-8">
+                                <div>
+                                    <img src="{{ related_post.image.url }}" width="250" alt="foto" class="py-4 h-[15em]">
+                                    <h3 class="text-3xl w-[85%]">{{ related_post.title }}</h3>
+                                </div>
+                                <div class="flex w-[85%] py-4">
+                                    <img src="{% static 'blog/img/perfil.jpg' %}" alt="foto" width="42">
+                                    <div class="px-4">
+                                        <p>{{ related_post.author }}</p>
+                                        <p>{{ related_post.created_date }}</p>
+                                    </div>
+                                </div>
+                            </article>
+                        </a>
+                        {% empty %}
+                            <p class="py-3">No hay posteos relacionados.</p>
+                        {% endfor %}
+                    </div>  
+               </section>
+
+               <section class="px-10">
+
+               </section>
+            </article>
+    
+            <aside class="w-[25%] justify-center items-start flex">
+                <section class="min-h-[20vh] w-80 border-8 border-red-400 flex flex-col items-center space-y-3 pb-2">
+                    <h3 class="text-3xl p-2 font-semibold">Más Vistos</h3>
+                    {% for more_view in more_views %}
+                    <a href="{% url 'blog:detail' more_view.id %}">
+                        <article class="bg-slate-50 min-w-72 min-h-20 flex shadow-lg">
+                            <img src="{% static 'blog/img/img.jpg' %}" alt="" width="100" class="p-1">
+                            <div>
+                                <h4 class="w-full pt-1 pb-2">{{ more_view.title }}</h4>
+                                <div class="flex space-x-3">
+                                    <img src="{% static 'blog/img/perfil.jpg' %}" alt="" width="35" class="rounded-full">
+                                    <div>
+                                        <p>{{ more_view.author }}</p>
+                                        <p>{{ more_view.created_date }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </a>
+                    {% endfor %}
+                </section>
+            </aside>
+        </section>
     </main>
 {% endblock content %}
