@@ -1,12 +1,25 @@
-{% extends 'layouts/base.html' %}
+{% extends 'layouts/base_profile.html' %}
 
-{% block title %}Actualizar Post{% endblock title %}Crear Post
+{% block title %}Actualizar Post{% endblock title %}
 
 {% block content %}
-    <form action="{% url 'blog:update' post.id %}" method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Editar">
-    </form>
-    <a href="{% url 'blog:home' %}">Volver atras</a>
+    <section class="h-[84.8vh] w-[75%] py-5">
+        <form action="{% url 'blog:update' post.id %}" method="POST"class="h-[100%]">
+            {% csrf_token %}
+            <div class="h-[50%] flex flex-col justify-center items-center space-y-6">
+                <div>
+                    {{ form.title }}
+                </div>
+                <div>
+                    {{ form.content }}
+                </div>
+                <div>
+                    {{ form.image }}
+                </div>
+            </div>
+            <div class="h-[50%] flex justify-center items-center">
+                <button class="bg-red-400 hover:bg-red-500 text-white font-semibold py-3 px-14 shadow-lg shadow-gray-400 h-[6vh]" type="submit">Agregar</button>
+            </div>
+        </form>
+    </section>
 {% endblock content %}
