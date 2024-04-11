@@ -7,8 +7,9 @@ from .views import (
     DetailPostView, 
     UpdatePostView, 
     DeletePostView, 
-    UserUpdateView,
-    Error404View
+    ProfileUpdateView,
+    ProfileListPostsView,
+    Error404View,
     )
 
 app_name = 'blog'
@@ -17,9 +18,10 @@ handler404 = Error404View.as_view()
 
 urlpatterns = [
     path('', HomeBlogView.as_view(), name='home'),
-    path('create/', CreatePostView.as_view(), name='create'),
     path('detail/<int:pk>', DetailPostView.as_view(), name='detail'),
-    path('update/<int:pk>', UpdatePostView.as_view(), name='update'),
     path('delete/<int:pk>', DeletePostView.as_view(), name='delete'),
-    path('profile/<int:pk>', login_required(UserUpdateView.as_view()), name='profile'),
+    path('profile/<int:pk>', login_required(ProfileUpdateView.as_view()), name='profile'),
+    path('profile/posts', login_required(ProfileListPostsView.as_view()), name='profile_posts'),
+    path('profile/create/post', login_required(CreatePostView.as_view()), name='create'),
+    path('profile/update/post/<int:pk>', login_required(UpdatePostView.as_view()), name='update'),
 ]
