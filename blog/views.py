@@ -70,7 +70,7 @@ class Error404View(TemplateView):
 
 
 
-class UserUpdateView(UpdateView):
+class ProfileUpdateView(UpdateView):
     model = CustomUser
     form_class = CustomUserCreationForm
     template_name = 'blog/profile_user_update.html'
@@ -89,3 +89,12 @@ class UserUpdateView(UpdateView):
             return render(request, self.error_template_name, status=403)
         context = self.get_context_data(object=self.object)
         return self.render_to_response(context)
+
+
+class ProfileListPostsView(ListView):
+    model = Post
+    template_name = 'blog/profile_list_posts.html'
+    context_object_name = 'posts'
+
+    def get_queryset(self):
+        return Post.objects.order_by('-id')
