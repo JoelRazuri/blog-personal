@@ -903,6 +903,50 @@ select {
   height: 100vh;
 }
 
+.h-\[80\.1vh\] {
+  height: 80.1vh;
+}
+
+.h-\[81vh\] {
+  height: 81vh;
+}
+
+.h-\[80\.5vh\] {
+  height: 80.5vh;
+}
+
+.h-\[80\.3vh\] {
+  height: 80.3vh;
+}
+
+.h-\[84\.8vh\] {
+  height: 84.8vh;
+}
+
+.h-\[100\%\] {
+  height: 100%;
+}
+
+.h-\[10\%\] {
+  height: 10%;
+}
+
+.h-\[20vh\] {
+  height: 20vh;
+}
+
+.h-\[10vh\] {
+  height: 10vh;
+}
+
+.h-\[5vh\] {
+  height: 5vh;
+}
+
+.h-\[6vh\] {
+  height: 6vh;
+}
+
 .min-h-20 {
   min-height: 5rem;
 }
@@ -979,6 +1023,10 @@ select {
   cursor: pointer;
 }
 
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .flex-col {
   flex-direction: column;
 }
@@ -1009,6 +1057,34 @@ select {
 
 .justify-between {
   justify-content: space-between;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.gap-1 {
+  gap: 0.25rem;
+}
+
+.gap-12 {
+  gap: 3rem;
+}
+
+.gap-16 {
+  gap: 4rem;
+}
+
+.gap-6 {
+  gap: 1.5rem;
+}
+
+.gap-40 {
+  gap: 10rem;
+}
+
+.gap-0 {
+  gap: 0px;
 }
 
 .space-x-11 > :not([hidden]) ~ :not([hidden]) {
@@ -1107,6 +1183,31 @@ select {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-yellow-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 240 138 / var(--tw-bg-opacity));
+}
+
+.bg-amber-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(120 53 15 / var(--tw-bg-opacity));
+}
+
+.bg-slate-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(100 116 139 / var(--tw-bg-opacity));
+}
+
+.bg-slate-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
+}
+
+.bg-slate-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 41 59 / var(--tw-bg-opacity));
+}
+
 .p-1 {
   padding: 0.25rem;
 }
@@ -1141,6 +1242,10 @@ select {
 
 .p-9 {
   padding: 2.25rem;
+}
+
+.p-14 {
+  padding: 3.5rem;
 }
 
 .px-10 {
@@ -1208,6 +1313,11 @@ select {
   padding-bottom: 2rem;
 }
 
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
 .pb-2 {
   padding-bottom: 0.5rem;
 }
@@ -1218,6 +1328,10 @@ select {
 
 .pt-28 {
   padding-top: 7rem;
+}
+
+.align-top {
+  vertical-align: top;
 }
 
 .font-serif {

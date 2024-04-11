@@ -1,0 +1,31 @@
+{% extends 'layouts/base_profile.html' %}
+{% block title %}Perfil | Post {% endblock title %}
+{% load static %}
+{% block content %}
+    <section class="h-[84.8vh] w-[75%] py-8 px-10 bg-slate-500">
+        <div class="grid grid-cols-1 gap-6 overflow-y-auto">
+            {% for post in posts  %}
+            <a href="{% url 'blog:detail' post.id %}">
+                <article class="bg-slate-50 flex shadow-lg">
+                    <img src="{{ post.image.url }}" alt="" width="100" class="p-1">
+                    <div>
+                        <h4 class="w-full pt-1 pb-2">{{ post.title }}</h4>
+                        <div class="flex space-x-3">
+                            <img src="{% static 'blog/img/perfil.jpg' %}" alt="" width="35" class="rounded-full">
+                            <div>
+                                <p>{{ post.author }}</p>
+                                <p>{{ post.created_date }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="{% url 'blog:detail' post.id %}">Ver</a>
+                        <a href="{% url 'blog:update' post.id %}">Editar</a>
+                        <a href="{% url 'blog:delete' post.id %}">Eliminar</a>
+                    </div>
+                </article>
+            </a>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock content %}
