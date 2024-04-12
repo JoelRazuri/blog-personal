@@ -1,14 +1,14 @@
-{% extends 'layouts/base.html' %} 
+{% extends 'layouts/base_profile.html' %} 
 
 {% block title %}Borrado del Post{% endblock title %}
 
 {% block content %}
-<main class="min-h-[84.7vh]">
+<section class="h-[84.8vh] w-[75%] py-5">
     <h2>Seguro deseas borrar el post "{{ post.title }}"?</h2>
     <form action="" method="POST">
         {% csrf_token %}
         <button tpye="submit">Borrar</button>
     </form>
     <a href="{% url 'blog:home' %}">Volver atras</a>
-</main>
+</section>
 {% endblock content %}

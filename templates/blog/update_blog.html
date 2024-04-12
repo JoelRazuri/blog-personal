@@ -13,12 +13,13 @@
                 <div>
                     {{ form.content }}
                 </div>
+                <img src="{{ post.image.url }}"  width="250px" alt="">
                 <div>
                     {{ form.image }}
                 </div>
             </div>
             <div class="h-[50%] flex justify-center items-center">
-                <button class="bg-red-400 hover:bg-red-500 text-white font-semibold py-3 px-14 shadow-lg shadow-gray-400 h-[6vh]" type="submit">Agregar</button>
+                <button class="bg-red-400 hover:bg-red-500 text-white font-semibold py-3 px-14 shadow-lg shadow-gray-400 h-[6vh]" type="submit">Actualizar</button>
             </div>
         </form>
     </section>
