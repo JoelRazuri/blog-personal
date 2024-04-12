@@ -5,10 +5,11 @@
 {% block content %}
     <main class="min-h-[84.8vh] flex">
         <section class="flex flex-col w-[75%] min-h-[84.8vh]">
-            <section class="min-h-[76.1vh] py-8 px-10 flex flex-wrap">
+            <div class="min-h-[76.1vh] py-8 px-10 flex flex-wrap">
                 {% for post in posts  %}
+                <div class="bg-white w-[300px] h-[420px] mb-8 mr-8 shadow-2xl">
                     <a href="{% url 'blog:detail' post.id %}">
-                        <article class="bg-white w-[300px] h-[420px] flex flex-col items-center justify-between shadow-2xl mb-8 mr-8">
+                        <article class="h-[420px] flex flex-col items-center justify-between">
                             <div>
                                 <img src="{{ post.image.url }}" width="250" alt="foto" class="py-4 h-[15em]">
                                 <h3 class="text-3xl w-[85%]">{{ post.title }}</h3>
@@ -22,8 +23,9 @@
                             </div>
                         </article>
                     </a>
+                </div>
                 {% endfor %}
-            </section>
+            </div>
             <div class="min-h-[8.7vh] p-6 flex justify-center items-center">
                 <span class="px-14 p-5 space-x-6">
                     {% if page_obj.has_previous %}
