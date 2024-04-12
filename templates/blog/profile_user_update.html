@@ -1,16 +1,36 @@
 {% extends 'layouts/base_profile.html' %}
+{% load static %}
 {% block title %}Perfil{% endblock title %}
 {% block content %}
     <section class="h-[84.8vh] w-[75%] py-5">
         <form action="{% url "blog:profile" user.id %}" method="POST" class="h-[100%]">
             {% csrf_token %}
-            <div class="h-[50%] grid grid-cols-2 gap-16 p-10">
-                {{ form.first_name }}
-                {{ form.last_name }}
-                {{ form.email }}
-                {{ form.username }}
-                {{ form.password1 }}
-                {{ form.password2 }}
+            <div class="h-[50%] grid grid-cols-2 items-center justify-items-center p-10">
+                <div class="flex flex-col w-[85%]">
+                    <label for="">Nombre</label>
+                    {{ form.first_name }}
+                </div>
+                <div class="flex flex-col w-[85%]">
+                    <label for="">Apellido</label>
+                    {{ form.last_name }}
+                </div>
+                <div class="flex flex-col w-[85%]">
+                    <label for="">Email</label>
+                    {{ form.email }}
+                </div>
+                <div class="flex flex-col w-[85%]">
+                    <label for="">Usuario</label>
+                    {{ form.username }}
+                    {% comment %} <input type="text" value="admin" disabled class="text-slate-500 cursor-not-allowed"> {% endcomment %}
+                </div>
+                <div class="flex flex-col w-[85%]">
+                    <label for="">Contraseña</label>
+                    {{ form.password1 }}
+                </div>
+                <div class="flex flex-col w-[85%]">
+                    <label for="">Repetir contraseña</label>
+                    {{ form.password2 }}
+                </div>
             </div>
             <div class="h-[50%] flex justify-center items-center">
                 <button class="bg-red-400 hover:bg-red-500 text-white font-semibold py-3 px-14 shadow-lg shadow-gray-400 h-[6vh]" type="submit">Modificar</button>
