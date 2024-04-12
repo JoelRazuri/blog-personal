@@ -12,24 +12,25 @@
     {% include 'layouts/partials/menu.html' %}
     
     <main class="flex px-10 items-center">
-        <aside class="h-[80.5vh] w-[25%] flex flex-col py-3 bg-red-100 shadow-lg">
+        <aside class="h-[80.5vh] w-[25%] flex flex-col py-3 bg-[#8181811A] shadow-lg">
             <div class="h-[50%] flex justify-center items-center">
                 <img src="{% static '/blog/img/perfil.jpg' %}" alt="foto de perfil" width="220px" class="rounded-full">
             </div>
             <div class="h-[50%] flex flex-col px-4">
-                <a href="{% url 'blog:profile' user.id %}" class="py-5">
-                    <p class="text-red-400 font-semibold text-3xl py-3">Datos personales</p>
-                    <hr class="border-red-400">
-                </a>
-                <a href="{% url 'blog:profile_posts' %}" class="py-5">
-                    <p class="font-semibold text-3xl py-3">Post</p>
-                    <hr class="border-black">
-                </a>
+                <div class="py-5">
+                    <a id="btn-personal-data" href="{% url 'blog:profile' user.id %}" onclick="changeButtonColor('btn-personal-data')"><p class="font-semibold text-3xl py-3">Datos personales</p></a>
+                    <hr id="hr-personal-data" class="border-black">
+                </div>
+                <div class="py-5">
+                    <a id="btn-personal-posts" href="{% url 'blog:profile_posts' %}" onclick="changeButtonColor('btn-personal-posts')"><p class="font-semibold text-3xl py-3">Post</p></a>
+                    <hr id="hr-personal-posts" class="border-black">
+                </div>
             </div>
         </aside>
-        {% block content %}{% endblock content %}
+    {% block content %}{% endblock content %}
     </main>
-
     {% include 'layouts/partials/footer.html' %}
+    <script src="{% static 'blog/js/menu.js' %}"></script>
+    <script src="{% static 'blog/js/buttonColor.js' %}"></script>
 </body>
 </html>
