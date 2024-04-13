@@ -7,15 +7,15 @@ from django import forms
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(
         required=True, 
-        widget=forms.EmailInput(attrs={'placeholder': 'correo electrónico'})
+        widget=forms.EmailInput(attrs={'placeholder': 'correo electrónico', 'class': 'w-1/2'})
         )
     
     password1 = forms.CharField(
         strip=False,
-        widget=forms.PasswordInput(attrs={'placeholder': 'contraseña'}),
+        widget=forms.PasswordInput(attrs={'placeholder': 'contraseña', 'class': 'w-1/2'}),
     )
     password2 = forms.CharField(
-        widget=forms.PasswordInput(attrs={'placeholder': 'repetir contraseña'}),
+        widget=forms.PasswordInput(attrs={'placeholder': 'repetir contraseña', 'class': 'w-1/2'}),
         strip=False,
     )
 
@@ -23,9 +23,9 @@ class CustomUserCreationForm(UserCreationForm):
         model = CustomUser
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
         widgets = {
-            'username': forms.TextInput(attrs={'placeholder': 'nombre de usuario'}),
-            'first_name': forms.TextInput(attrs={'placeholder': 'nombre'}),
-            'last_name': forms.TextInput(attrs={'placeholder': 'apellido'}),
+            'username': forms.TextInput(attrs={'placeholder': 'nombre de usuario', 'class': 'w-1/2'}),
+            'first_name': forms.TextInput(attrs={'placeholder': 'nombre', 'class': 'w-1/2'}),
+            'last_name': forms.TextInput(attrs={'placeholder': 'apellido', 'class': 'w-1/2'}),
         }
 
 
