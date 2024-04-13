@@ -97,4 +97,4 @@ class ProfileListPostsView(ListView):
     context_object_name = 'posts'
 
     def get_queryset(self):
-        return Post.objects.order_by('-id')
+        return Post.objects.filter(author=self.request.user).order_by('-id')
