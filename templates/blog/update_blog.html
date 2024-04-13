@@ -1,16 +1,16 @@
 {% extends 'layouts/base_profile.html' %}
 
-{% block title %}Actualizar Post{% endblock title %}
+{% block title %}Actualizar Publicación{% endblock title %}
 
 {% block content %}
     <section class="h-[84.8vh] w-[75%] py-5">
         <form action="{% url 'blog:update' post.id %}" method="POST"class="h-[100%]">
             {% csrf_token %}
             <div class="h-[90%] w-full flex flex-col justify-center items-center space-y-6">
-                <div class="w-1/2 bg-slate-500">
+                <div class="w-1/2">
                     {{ form.title }}
                 </div>
-                <div class="w-1/2 h-1/2 bg-slate-500">
+                <div class="w-1/2 h-1/2">
                     {{ form.content }}
                 </div>
                 <div class="flex flex-col justify-center items-center w-1/2">

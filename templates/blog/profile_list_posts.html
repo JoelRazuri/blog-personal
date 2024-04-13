@@ -1,9 +1,10 @@
 {% extends 'layouts/base_profile.html' %}
-{% block title %}Perfil | Post {% endblock title %}
+{% block title %}Publicaciones {% endblock title %}
 {% load static %}
 {% block content %}
     <section class="h-[84.8vh] w-[75%] py-8 px-10 overflow-y-scroll">
-        <div class="grid grid-cols-2 gap-6">
+        <a href="{% url 'blog:create' %}" class="bg-red-400 hover:bg-red-500 text-white font-semibold py-3 px-4 shadow-lg rounded-md">Crear publicación</a>
+        <div class="grid grid-cols-2 gap-6 mt-5">
             {% for post in posts  %}
                 <article class="bg-slate-50 flex shadow-lg h-28 justify-between">
                     <div class="flex">
