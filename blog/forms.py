@@ -8,6 +8,7 @@ class PostForm(ModelForm):
         model = Post
         fields = ('title', 'content', 'image')
         widgets = {
-            'title': forms.TextInput(attrs={'placeholder': 'titulo'}),
-            'content': forms.TextInput(attrs={'placeholder': 'contenido'}),
+            'title': forms.TextInput(attrs={'placeholder': 'titulo', 'class': 'w-full'}),
+            'content': forms.Textarea(attrs={'placeholder': 'contenido', 'class': 'w-full h-[100%]'}),
+            'image': forms.FileInput(),
         }
