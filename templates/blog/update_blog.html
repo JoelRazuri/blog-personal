@@ -6,19 +6,26 @@
     <section class="h-[84.8vh] w-[75%] py-5">
         <form action="{% url 'blog:update' post.id %}" method="POST"class="h-[100%]">
             {% csrf_token %}
-            <div class="h-[50%] flex flex-col justify-center items-center space-y-6">
-                <div>
+            <div class="h-[90%] w-full flex flex-col justify-center items-center space-y-6">
+                <div class="w-1/2 bg-slate-500">
                     {{ form.title }}
                 </div>
-                <div>
+                <div class="w-1/2 h-1/2 bg-slate-500">
                     {{ form.content }}
                 </div>
-                <img src="{{ post.image.url }}"  width="250px" alt="">
-                <div>
-                    {{ form.image }}
+                <div class="flex flex-col justify-center items-center w-1/2">
+                    <div class="flex mb-4 items-center w-1/2 space-x-6">
+                        <label for="">Actual:</label>
+                        <img src="{{ post.image.url }}" alt="" width="200px">
+                    </div>
+                    <div class="w-1/2 flex space-x-2">
+                        <label for="">Cambiar:</label>
+                        {{ form.image }}
+                    </div>
+                    
                 </div>
             </div>
-            <div class="h-[50%] flex justify-center items-center">
+            <div class="h-[10%] flex justify-center items-center">
                 <button class="bg-red-400 hover:bg-red-500 text-white font-semibold py-3 px-14 shadow-lg shadow-gray-400 h-[6vh]" type="submit">Actualizar</button>
             </div>
         </form>
