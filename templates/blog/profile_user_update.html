@@ -3,7 +3,7 @@
 {% block title %}Perfil{% endblock title %}
 {% block content %}
     <section class="h-[84.8vh] w-[75%] py-5">
-        <form action="{% url "blog:profile" user.id %}" method="POST" class="h-[100%]">
+        <form action="{% url "blog:profile" user.id %}" method="POST" enctype="multipart/form-data" class="h-[100%]">
             {% csrf_token %}
             <div class="h-[50%] grid grid-cols-2 items-center justify-items-center p-10">
                 <div class="flex flex-col w-[85%]">
@@ -18,10 +18,9 @@
                     <label for="">Email</label>
                     {{ form.email }}
                 </div>
-                <div class="flex flex-col w-[85%]">
+                <div class="content-admin flex flex-col w-[85%]">
                     <label for="">Usuario</label>
-                    {{ form.username }}
-                    {% comment %} <input type="text" value="admin" disabled class="text-slate-500 cursor-not-allowed"> {% endcomment %}
+                    <input type="text" value="{{ user.username }}" disabled class="text-slate-500 cursor-not-allowed w-1/2"> 
                 </div>
                 <div class="flex flex-col w-[85%]">
                     <label for="">Contraseña</label>
