@@ -30,7 +30,7 @@
                 </section>
 
                <section class="px-10">
-                    <h2 class="py-4 font-semibold text-4xl">Más Posts</h2>
+                    <h2 class="py-4 font-semibold text-4xl">Más Publicaciones</h2>
                     <div class="flex">
                         {% for related_post in related_posts  %}
                         <a href="{% url 'blog:detail' related_post.id %}">
