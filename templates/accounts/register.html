@@ -31,6 +31,18 @@
                             {{ form.password2 }}
                         </div>
                     </div>
+                    <div class="flex justify-center p-3 mb-3">
+                        {% if form.errors %}
+                          <p class="text-red-500">¡Oops! Hubo un problema:</p>
+                          <ul>
+                              {% for field, error_list in form.errors.items %}
+                                  {% for error in error_list %}
+                                      <li>{{ error }}</li>
+                                  {% endfor %}
+                              {% endfor %}
+                          </ul>
+                        {% endif %}
+                    </div>
                     <div class="flex justify-center">
                         <button class="bg-red-400 hover:bg-red-500 text-white font-semibold py-3 px-14 shadow-lg shadow-gray-400" type="submit">Crear cuenta</button>
                     </div>
