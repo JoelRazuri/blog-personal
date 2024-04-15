@@ -29,6 +29,35 @@ class CustomUserCreationForm(UserCreationForm):
         }
 
 
+class CustomUserUpdateForm(forms.ModelForm):
+    new_password1 = forms.CharField(
+        strip=False,
+        widget=forms.PasswordInput(attrs={'placeholder': 'Nueva contraseña', 'class': 'w-1/2'}),
+        required=False,
+    )
+    new_password2 = forms.CharField(
+        widget=forms.PasswordInput(attrs={'placeholder': 'Repetir nueva contraseña', 'class': 'w-1/2'}),
+        strip=False,
+        required=False,
+    )
+    class Meta:
+        model = CustomUser
+        fields = ['first_name', 'last_name', 'email', 'image']
+        widgets = {
+            'first_name': forms.TextInput(attrs={'class': 'w-1/2'}),
+            'last_name': forms.TextInput(attrs={'class': 'w-1/2'}),
+            'email': forms.EmailInput(attrs={'class': 'w-1/2'}),
+        }
+    
+    def clean(self):
+        cleaned_data = super().clean()
+        new_password1 = cleaned_data.get('new_password1')
+        new_password2 = cleaned_data.get('new_password2')
+        if new_password1 != new_password2:
+            self.add_error('new_password2', 'Las contraseñas no coinciden.')
+        return cleaned_data
+
+
 class CustomAuthenticationForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
