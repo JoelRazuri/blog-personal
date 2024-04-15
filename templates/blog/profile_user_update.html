@@ -3,7 +3,7 @@
 {% block title %}Perfil{% endblock title %}
 {% block content %}
     <section class="h-[84.8vh] w-[75%] py-5">
-        <form action="{% url "blog:profile" user.id %}" method="POST" enctype="multipart/form-data" class="h-[100%]">
+        <form action="{% url "blog:profile" %}" method="POST" enctype="multipart/form-data" class="h-[100%]">
             {% csrf_token %}
             <div class="h-[50%] grid grid-cols-2 items-center justify-items-center p-10">
                 <div class="flex flex-col w-[85%]">
@@ -24,11 +24,15 @@
                 </div>
                 <div class="flex flex-col w-[85%]">
                     <label for="">Contraseña</label>
-                    {{ form.password1 }}
+                    {{ form.new_password1 }}
                 </div>
                 <div class="flex flex-col w-[85%]">
                     <label for="">Repetir contraseña</label>
-                    {{ form.password2 }}
+                    {{ form.new_password2 }}
+                </div>
+                <div class="flex flex-col w-[85%] mt-1">
+                    <label for="">Foto de perfil</label>
+                    {{ form.image }}
                 </div>
             </div>
             <div class="h-[50%] flex justify-center items-center">
