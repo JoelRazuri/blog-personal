@@ -1,10 +1,10 @@
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView, TemplateView
+from accounts.forms import CustomUserUpdateForm
+from accounts.models import CustomUser
 from django.urls import reverse_lazy
 from django.shortcuts import render
 from .forms import PostForm
 from .models import Post
-from accounts.models import CustomUser
-from accounts.forms import CustomUserCreationForm
 
 
 class HomeBlogView(ListView):
@@ -72,24 +72,23 @@ class Error404View(TemplateView):
 
 class ProfileUpdateView(UpdateView):
     model = CustomUser
-    form_class = CustomUserCreationForm
+    form_class = CustomUserUpdateForm
     template_name = 'blog/profile_user_update.html'
     context_object_name = 'user'
-    error_template_name = 'layouts/error_403.html'
+    success_url = reverse_lazy('blog:profile')
 
-    def get_object(self, queryset=None):
-        object = super().get_object(queryset)
-        if self.request.user.pk != object.pk:
-            return None
-        return object
+    def dispatch(self, request, *args, **kwargs):
+       self.object = self.get_object()
+       return super().dispatch(request, *args, **kwargs)
     
-    def get(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        if self.object is None:
-            return render(request, self.error_template_name, status=403)
-        context = self.get_context_data(object=self.object)
-        return self.render_to_response(context)
+    def get_object(self):
+        return self.request.user
 
+    def form_valid(self, form):
+        user = form.save(commit=False)
+        user.image = self.request.FILES.get('image')
+        user.save()
+        return super().form_valid(form)
 
 class ProfileListPostsView(ListView):
     model = Post
