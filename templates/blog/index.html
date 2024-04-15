@@ -12,7 +12,9 @@
                         <article class="h-[420px] flex flex-col items-center justify-between">
                             <div>
                                 <img src="{{ post.image.url }}" width="250" alt="foto" class="py-4 h-[15em]">
-                                <h3 class="text-3xl w-[85%]">{{ post.title }}</h3>
+                            </div>
+                            <div class="flex w-[85%]">
+                                <h3 class="text-3xl">{{ post.title }}</h3>
                             </div>
                             <div class="flex w-[85%] py-4">
                                 <img src="{% static 'blog/img/perfil.jpg' %}" alt="foto" width="42">
@@ -29,7 +31,7 @@
             <div class="min-h-[8.7vh] p-6 flex justify-center items-center">
                 <span class="px-14 p-5 space-x-6">
                     {% if page_obj.has_previous %}
-                        <a href="?page={{ page_obj.previous_page_number }}" class="py-2 px-5 bg-red-400 text-slate-50 rounded-md">Anterior</a>
+                        <a href="?{{ request.GET.urlencode }}&page={{ page_obj.previous_page_number }}" class="py-2 px-5 bg-red-400 text-slate-50 rounded-md">Anterior</a>
                     {% endif %}
                     
                     {% if page_obj.paginator.num_pages != 1 %}
@@ -39,7 +41,7 @@
                     {% endif %}
                     
                     {% if page_obj.has_next %}
-                        <a href="?page={{ page_obj.next_page_number }}" class="py-2 px-5 bg-red-400 text-slate-50 rounded-md">Siguiente</a>
+                        <a href="?{{ request.GET.urlencode }}&page={{ page_obj.next_page_number }}" class="py-2 px-5 bg-red-400 text-slate-50 rounded-md">Siguiente</a>
                     {% endif %}
                 </span>
             </div>
