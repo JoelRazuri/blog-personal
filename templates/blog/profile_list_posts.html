@@ -3,7 +3,18 @@
 {% load static %}
 {% block content %}
     <section class="h-[84.8vh] w-[75%] py-8 px-10 overflow-y-scroll">
-        <a href="{% url 'blog:create' %}" class="bg-red-400 hover:bg-red-500 text-white font-semibold py-3 px-4 shadow-lg rounded-md">Crear publicación</a>
+        <div class="flex space-x-4">
+            <a href="{% url 'blog:create' %}" class="bg-red-400 max-h-12 hover:bg-red-500 text-white font-semibold py-3 px-4 shadow-lg rounded-md">Crear publicación</a>
+            <div class="flex justify-center">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="py-2 px-4 mb-4 rounded-lg {% if message.tags == 'error' %}bg-red-200 text-red-800{% elif message.tags == 'success' %} bg-green-200 text-green-800{% endif %}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
         <div class="grid grid-cols-2 gap-6 mt-5">
             {% for post in posts  %}
                 <article class="bg-slate-50 flex shadow-lg h-28 justify-between">
