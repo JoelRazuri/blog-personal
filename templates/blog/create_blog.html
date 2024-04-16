@@ -12,12 +12,15 @@
             {% csrf_token %}
             <div class="h-[80%] flex flex-col justify-center items-center space-y-6">
                 <div class="w-1/2">
+                    {{ form.title.label }}:
                     {{ form.title }}
                 </div>
                 <div class="w-1/2">
+                    {{ form.content.label }}:
                     {{ form.content }}
                 </div>
                 <div>
+                    {{ form.image.label }}:
                     {{ form.image }}
                 </div>
             </div>

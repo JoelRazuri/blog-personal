@@ -17,11 +17,11 @@
             <article class="w-[75%] flex flex-col">
                 <section class="px-10">
                     <img src="{{ post.image.url }}" alt="foto del post" class=" h-[40em] w-full">
-                    <p class="py-8">{{ post.content }}</p>
-                    <div class="">
+                    <p class="py-8">{{ post.content | safe }}</p>
+                    <div class="py-5">
                         <hr class=" border-red-400">
                     </div>
-                    <p class="py-7">
+                    <p>
                         <span class="text-xl">Compartir </span>
                         <a href="">Facebook</a>
                         <a href="">Twitter</a>
