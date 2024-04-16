@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'tailwind',
     'theme',
     'django_browser_reload',
+    'ckeditor',
 
     'blog',
     'accounts',
@@ -137,3 +138,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Usuario personalizado, usando de base el modelo 'User' que proporciona Django
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'heigth': 'auto',
+        'resize_enabled': False,
+    },
+}
