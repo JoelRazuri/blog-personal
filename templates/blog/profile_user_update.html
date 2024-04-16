@@ -7,31 +7,31 @@
             {% csrf_token %}
             <div class="h-[50%] grid grid-cols-2 items-center justify-items-center p-10">
                 <div class="flex flex-col w-[85%]">
-                    <label for="">Nombre</label>
+                    <label for="">Nombre:</label>
                     {{ form.first_name }}
                 </div>
                 <div class="flex flex-col w-[85%]">
-                    <label for="">Apellido</label>
+                    <label for="">Apellido:</label>
                     {{ form.last_name }}
                 </div>
                 <div class="flex flex-col w-[85%]">
-                    <label for="">Email</label>
+                    <label for="">Email:</label>
                     {{ form.email }}
                 </div>
                 <div class="content-admin flex flex-col w-[85%]">
-                    <label for="">Usuario</label>
+                    <label for="">Usuario:</label>
                     <input type="text" value="{{ user.username }}" disabled class="text-slate-500 cursor-not-allowed w-1/2"> 
                 </div>
                 <div class="flex flex-col w-[85%]">
-                    <label for="">Contraseña</label>
+                    <label for="">Contraseña:</label>
                     {{ form.new_password1 }}
                 </div>
                 <div class="flex flex-col w-[85%]">
-                    <label for="">Repetir contraseña</label>
+                    <label for="">Repetir contraseña:</label>
                     {{ form.new_password2 }}
                 </div>
                 <div class="flex flex-col w-[85%] mt-1">
-                    <label for="">Foto de perfil</label>
+                    <label for="">Foto de perfil:</label>
                     {{ form.image }}
                 </div>
             </div>
