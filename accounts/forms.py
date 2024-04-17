@@ -47,6 +47,7 @@ class CustomUserUpdateForm(forms.ModelForm):
             'first_name': forms.TextInput(attrs={'class': 'w-1/2'}),
             'last_name': forms.TextInput(attrs={'class': 'w-1/2'}),
             'email': forms.EmailInput(attrs={'class': 'w-1/2'}),
+            'image': forms.FileInput(),
         }
     
     def clean(self):

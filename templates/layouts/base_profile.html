@@ -15,7 +15,7 @@
     <main class="flex px-10 items-center">
         <aside class="h-[80.5vh] w-[25%] flex flex-col py-3 bg-[#8181811A] shadow-lg">
             <div class="h-[50%] flex justify-center items-center">
-                <img src="{% static '/blog/img/perfil.jpg' %}" alt="foto de perfil" width="220px" class="rounded-full">
+                <img src="{{ user.image.url }}" alt="foto de perfil" width="220px" class="rounded-full">
             </div>
             <div class="h-[50%] flex flex-col px-4">
                 <div class="py-5">

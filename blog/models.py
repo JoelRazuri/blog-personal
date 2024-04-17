@@ -9,7 +9,24 @@ class Post(models.Model):
     content = RichTextField(blank=False, null=False, verbose_name='Contenido')
     image = models.ImageField(upload_to='post_images/', verbose_name='Imagen')
     created_date = models.DateField(default=date.today, verbose_name='Fecha de creación')
+    published = models.BooleanField(default=False)
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, verbose_name='Autor')
 
     def __str__(self):
         return self.title
+    
+
+class PostView(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, verbose_name='Autor')
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username
+    
+
+class PostLike(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, verbose_name='Autor')
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username

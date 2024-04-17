@@ -15,7 +15,7 @@ class HomeBlogView(ListView):
     paginate_by = 8 
 
     def get_queryset(self):
-        queryset = Post.objects.order_by('-id')
+        queryset = Post.objects.filter(published=True).order_by('-id')
         search_query = self.request.GET.get('q')
         if search_query:
             queryset = queryset.filter(
@@ -25,7 +25,7 @@ class HomeBlogView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['more_views'] = Post.objects.order_by('-id')[:6]
+        context['more_views'] = Post.objects.filter(published=True).order_by('-id')[:6]
         return context
 
 

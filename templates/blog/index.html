@@ -17,9 +17,9 @@
                                 <h3 class="text-3xl">{{ post.title }}</h3>
                             </div>
                             <div class="flex w-[85%] py-4">
-                                <img src="{% static 'blog/img/perfil.jpg' %}" alt="foto" width="42">
+                                <img src="{{ user.image.url }}" alt="foto" width="42">
                                 <div class="px-4">
-                                    <p>{{ post.author }}</p>
+                                    <p>{{ post.author | title }}</p>
                                     <p>{{ post.created_date }}</p>
                                 </div>
                             </div>
@@ -46,27 +46,6 @@
                 </span>
             </div>
         </section>
-        <aside class="w-[25%] justify-center items-start flex py-12">
-            <section class="min-h-[20vh] w-80 border-8 border-red-400 flex flex-col items-center space-y-3 pb-2">
-                <h3 class="text-3xl p-2 font-semibold">Más Vistos</h3>
-                {% for more_view in more_views %}
-                    <a href="{% url 'blog:detail' more_view.id %}">
-                        <article class="bg-slate-50 min-w-72 min-h-20 flex shadow-lg">
-                            <img src="{% static 'blog/img/img.jpg' %}" alt="" width="100" class="p-1">
-                            <div>
-                                <h4 class="w-full pt-1 pb-2">{{ more_view.title }}</h4>
-                                <div class="flex space-x-3">
-                                    <img src="{% static 'blog/img/perfil.jpg' %}" alt="" width="35" class="rounded-full">
-                                    <div>
-                                        <p>{{ more_view.author }}</p>
-                                        <p>{{ more_view.created_date }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                    </a>
-                {% endfor %}
-            </section>
-        </aside>
+        {% include 'layouts/partials/aside.html' %}
     </main>
 {% endblock content %}
