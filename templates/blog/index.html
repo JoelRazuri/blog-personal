@@ -18,9 +18,14 @@
                             </div>
                             <div class="flex w-[85%] py-4">
                                 <img src="{{ user.image.url }}" alt="foto" width="42">
-                                <div class="px-4">
+                                <div class="px-3">
                                     <p>{{ post.author | title }}</p>
                                     <p>{{ post.created_date }}</p>
+                                </div>
+                                <div>
+                                    <span>L {{ post.get_like_count }} |</span>
+                                    <span>V {{ post.get_view_count }} |</span>
+                                    <span>C {{ post.get_comment_count }}</span>
                                 </div>
                             </div>
                         </article>
