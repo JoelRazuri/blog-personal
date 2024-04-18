@@ -15,6 +15,18 @@ class Post(models.Model):
     def __str__(self):
         return self.title
     
+    @property
+    def get_comment_count(self):
+        return self.comment_set.all().count()
+    
+    @property
+    def get_view_count(self):
+        return self.postview_set.all().count()
+    
+    @property
+    def get_like_count(self):
+        return self.postlike_set.all().count()
+
 
 class PostView(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, verbose_name='Autor')
