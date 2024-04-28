@@ -34,7 +34,6 @@ INSTALLED_APPS = [
 
     'blog',
     'accounts',
-    'comments',
 ]
 
 # Tailwind installation

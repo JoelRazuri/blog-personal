@@ -18,9 +18,7 @@
                 <section class="px-10">
                     <img src="{{ post.image.url }}" alt="foto del post" class=" h-[40em] w-full">
                     <div>
-                        <span>L {{ post.get_like_count }} |</span>
-                        <span>V {{ post.get_view_count }} |</span>
-                        <span>C {{ post.get_comment_count }}</span>
+                        <span>V {{ post.get_view_count }} |</span>  
                     </div>
                     <p class="py-8">{{ post.content | safe }}</p>
                     <div class="py-5">
