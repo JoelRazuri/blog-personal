@@ -53,29 +53,15 @@ class DetailPostView(DetailView):
     template_name = 'blog/detail_blog.html'
     context_object_name = 'post'
 
-    # def register_view(self, post):
-    #     # Verifica si el usuario es autenticado
-    #     if self.request.user.is_authenticated:
-    #         PostView.objects.get_or_create(user=self.request.user, post=post)
-    #     else:
-    #         # Nombre de la cookie
-    #         cookie_name = f"viewed_{post.id}"
-    #         # Comprueba si la cookie ya existe
-    #         if cookie_name not in self.request.COOKIES:
-    #             # Si no existe, crear un nuevo registro de PostView
-    #             PostView.objects.create(user=None, post=post)
-    #             # Establecer la cookie para evitar múltiples vistas
-    #             self.response.set_cookie(cookie_name, str(uuid.uuid4()), max_age=3600 * 24)  # 1 día de duración
+    def get_object(self, **kwargs):
+        post = super().get_object(**kwargs)
 
-    # def get(self, request, *args, **kwargs):
-    #     # Obtiene el post
-    #     post = self.get_object()
-        
-    #     # Registra la vista
-    #     self.register_view(post)
+        if self.request.user.is_authenticated:
+            PostView.objects.get_or_create(user=self.request.user, post=post)
+        else:
+            PostView.objects.create(user=None, post=post)
 
-    #     # Continúa el flujo normal de DetailView
-    #     return super().get(request, *args, **kwargs)
+        return post
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
