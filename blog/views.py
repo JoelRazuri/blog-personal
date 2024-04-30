@@ -1,12 +1,13 @@
+from django.db.models.base import Model as Model
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView, TemplateView
 from accounts.forms import CustomUserUpdateForm
 from accounts.models import CustomUser
 from django.urls import reverse_lazy
 from django.contrib import messages
-from django.shortcuts import render
 from django.db.models import Q
 from .forms import PostForm
-from .models import Post
+from .models import Post, PostView
+import uuid
 
 class HomeBlogView(ListView):
     model = Post
@@ -51,6 +52,30 @@ class DetailPostView(DetailView):
     model = Post
     template_name = 'blog/detail_blog.html'
     context_object_name = 'post'
+
+    # def register_view(self, post):
+    #     # Verifica si el usuario es autenticado
+    #     if self.request.user.is_authenticated:
+    #         PostView.objects.get_or_create(user=self.request.user, post=post)
+    #     else:
+    #         # Nombre de la cookie
+    #         cookie_name = f"viewed_{post.id}"
+    #         # Comprueba si la cookie ya existe
+    #         if cookie_name not in self.request.COOKIES:
+    #             # Si no existe, crear un nuevo registro de PostView
+    #             PostView.objects.create(user=None, post=post)
+    #             # Establecer la cookie para evitar múltiples vistas
+    #             self.response.set_cookie(cookie_name, str(uuid.uuid4()), max_age=3600 * 24)  # 1 día de duración
+
+    # def get(self, request, *args, **kwargs):
+    #     # Obtiene el post
+    #     post = self.get_object()
+        
+    #     # Registra la vista
+    #     self.register_view(post)
+
+    #     # Continúa el flujo normal de DetailView
+    #     return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

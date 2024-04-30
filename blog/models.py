@@ -22,7 +22,7 @@ class Post(models.Model):
 
 
 class PostView(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, verbose_name='Autor')
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, verbose_name='Autor', null=True, blank=True)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
     def __str__(self):
