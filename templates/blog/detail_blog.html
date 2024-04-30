@@ -1,6 +1,6 @@
 {% extends 'layouts/base.html' %}
 
-{% block title %}Detalle del Publicación{% endblock title %}Blog
+{% block title %}Detalle del Publicación{% endblock title %}
 
 {% block content %}
 {% load static %}
@@ -8,8 +8,8 @@
         <div class="px-10 py-5">
             <h2 class="font-semibold text-slate-900 text-6xl py-4 mb-2">{{ post.title }}</h2>
             <div class="flex items-center">
-                <img src="{{ user.image.url }}" alt="foto" class="mr-1 rounded-full h-9 w-9">
-                <p>{{ post.author | title }} <span class="text-gray-500">| {{ post.created_date }}</span></p>
+                <img src="{{ post.author.image.url }}" alt="foto" class="mr-1 rounded-full h-9 w-9">
+                <p>{{ post.author.username | title }} <span class="text-gray-500">| {{ post.created_date }}</span></p>
             </div>
         </div>
 
@@ -43,9 +43,9 @@
                                     <h3 class="text-3xl w-[85%]">{{ related_post.title }}</h3>
                                 </div>
                                 <div class="flex w-[85%] py-4">
-                                    <img src="{% static 'blog/img/perfil.jpg' %}" alt="foto" width="42">
+                                    <img src="{{ related_post.author.image.url }}" alt="foto" width="42">
                                     <div class="px-4">
-                                        <p>{{ related_post.author }}</p>
+                                        <p>{{ related_post.author.username }}</p>
                                         <p>{{ related_post.created_date }}</p>
                                     </div>
                                 </div>

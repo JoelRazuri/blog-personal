@@ -17,9 +17,9 @@
                                 <h3 class="text-3xl">{{ post.title }}</h3>
                             </div>
                             <div class="flex w-[85%] py-4">
-                                <img src="{{ user.image.url }}" alt="foto" width="42">
+                                <img src="{{ post.author.image.url }}" alt="foto" width="42">
                                 <div class="px-3">
-                                    <p>{{ post.author | title }}</p>
+                                    <p>{{ post.author.username | title }}</p>
                                     <p>{{ post.created_date }}</p>
                                 </div>
                                 <div>

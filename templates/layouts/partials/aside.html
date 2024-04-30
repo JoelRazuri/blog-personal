@@ -8,9 +8,9 @@
                     <div>
                         <h4 class="w-full pt-1 pb-2">{{ more_view.title }}</h4>
                         <div class="flex space-x-3 items-center">
-                            <img src="{{ user.image.url }}" alt="" class="h-[40px] w-[40px] rounded-full">
+                            <img src="{{ more_view.author.image.url }}" alt="" class="h-[40px] w-[40px] rounded-full">
                             <div>
-                                <p>{{ more_view.author | title }}</p>
+                                <p>{{ more_view.author.username | title }}</p>
                                 <p>{{ more_view.created_date }}</p>
                             </div>
                         </div>
