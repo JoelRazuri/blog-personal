@@ -7,7 +7,8 @@ from django.contrib import messages
 from django.db.models import Q
 from .forms import PostForm
 from .models import Post, PostView
-import uuid
+from django.http import HttpResponseRedirect
+
 
 class HomeBlogView(ListView):
     model = Post
@@ -121,14 +122,30 @@ class ProfileUpdateView(UpdateView):
         return self.request.user
 
     def form_valid(self, form):
+        changes_made = False
+        new_image = self.request.FILES.get('image')
+        if new_image:
+            changes_made = True
+        if not changes_made:
+            for field in form.changed_data:
+                if field != 'image':  
+                    changes_made = True
+                    break
+        if not changes_made:
+            messages.info(self.request, '¡No hizo ningún cambio!')
+            return self.redirect_to_success()
         user = form.save(commit=False)
-        user.image = self.request.FILES.get('image')
+        if new_image:
+            user.image = new_image 
         user.save()
         messages.success(self.request, '¡Tus datos de perfil se han actualizado correctamente!')
         return super().form_valid(form)
+
+    def redirect_to_success(self):
+        return HttpResponseRedirect(self.success_url)
     
     def form_invalid(self, form):
-        messages.error(self.request, 'Hubo un error al actualizar tus datos de perfil. Por favor, inténtalo de nuevo.')
+        messages.error(self.request, '¡Hubo un error al actualizar tus datos de perfil. Por favor, inténtalo de nuevo!')
         return super().form_invalid(form)
 
 class ProfileListPostsView(ListView):
