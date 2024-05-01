@@ -16,11 +16,11 @@
         <section class="flex">
             <article class="w-[75%] flex flex-col">
                 <section class="px-10">
-                    <img src="{{ post.image.url }}" alt="foto del post" class=" h-[40em] w-full">
-                    <div>
-                        <span>V {{ post.get_view_count }} |</span>  
+                    <img src="{{ post.image.url }}" alt="foto del post" class=" h-[40em] w-full mb-3">
+                    <div class="text-red-500">
+                        <span><i class="fa-regular fa-eye"></i> {{ post.get_view_count }}</span>  
                     </div>
-                    <p class="py-8">{{ post.content | safe }}</p>
+                    <p class="py-2">{{ post.content | safe }}</p>
                     <div class="py-5">
                         <hr class=" border-red-400">
                     </div>

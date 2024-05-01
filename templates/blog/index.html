@@ -22,8 +22,8 @@
                                     <p>{{ post.author.username | title }}</p>
                                     <p>{{ post.created_date }}</p>
                                 </div>
-                                <div>
-                                    <span>V {{ post.get_view_count }} |</span>
+                                <div class="flex justify-end w-20 text-red-500">
+                                    <span><i class="fa-regular fa-eye"></i> {{ post.get_view_count }}</span>
                                 </div>
                             </div>
                         </article>
