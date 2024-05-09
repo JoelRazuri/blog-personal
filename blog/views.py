@@ -43,7 +43,7 @@ class CreatePostView(CreateView):
         return super().form_valid(form)
     
     def form_valid(self, form):
-        messages.success(self.request, '¡La publicación se ha creado correctamente!')
+        messages.success(self.request, '¡La publicación se ha creado correctamente! Espere a que el administrador la habilite')
         form.instance.author = self.request.user
         return super().form_valid(form)
 
