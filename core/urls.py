@@ -9,7 +9,6 @@ urlpatterns = [
     path('', blog_home, name='home'),
     path('blog/', include('blog.urls', namespace='blog')),
     path('accounts/', include('accounts.urls', namespace='accounts')),
-    path("__reload__/", include("django_browser_reload.urls"))
 ]
 
 
