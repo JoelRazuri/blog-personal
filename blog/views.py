@@ -1,4 +1,5 @@
 from django.db.models.base import Model as Model
+from django.db.models import Count
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView, TemplateView
 from accounts.forms import CustomUserUpdateForm
 from accounts.models import CustomUser
@@ -27,7 +28,7 @@ class HomeBlogView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['more_views'] = Post.objects.filter(published=True).order_by('-id')[:6]
+        context['more_views'] = Post.objects.filter(published=True).annotate(view_count=Count('postview')).order_by('-view_count')[:6]
         return context
 
 
