@@ -34,7 +34,7 @@ INSTALLED_APPS = [
 
     'tailwind',
     'theme',
-    'django_browser_reload',
+    # 'django_browser_reload',
     'ckeditor',
 
     'blog',
@@ -59,7 +59,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    "django_browser_reload.middleware.BrowserReloadMiddleware", # Tailwind middleware
+    # "django_browser_reload.middleware.BrowserReloadMiddleware", # Tailwind middleware
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
