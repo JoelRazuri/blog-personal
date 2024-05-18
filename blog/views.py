@@ -64,7 +64,7 @@ class DetailPostView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         author = self.object.author
-        context['more_views'] = Post.objects.order_by('-id')[:6]
+        context['more_views'] = Post.objects.filter(published=True).annotate(view_count=Count('postview')).order_by('-view_count')[:6]
         context['related_posts'] = Post.objects.filter(author=author).exclude(pk=self.object.pk).order_by('-id')[:4]
         return context
 
