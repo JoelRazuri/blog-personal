@@ -3,52 +3,53 @@
 {% block title %}Blog{% endblock title %}
 {% load static %}
 {% block content %}
-    <main class="min-h-[84.8vh] flex">
-        <section class="flex flex-col w-[75%] min-h-[84.8vh]">
-            <div class="min-h-[76.1vh] py-8 px-10 flex flex-wrap">
+    <div class="max-w-7xl mx-auto px-4 pt-24 pb-12 flex flex-col lg:flex-row gap-8">
+        <main class="lg:w-3/4">
+            <div class="text-center mb-8">
+                <h1 class="text-4xl font-bold text-gray-800 mb-4">Welcome to CodeBlog</h1>
+                <p class="text-xl text-gray-600">Your daily source for programming insights, tutorials, and tech news</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
                 {% for post in posts  %}
-                <div class="bg-white w-[300px] h-[420px] mb-8 mr-8 shadow-2xl">
-                    <a href="{% url 'blog:detail' post.id %}">
-                        <article class="h-[420px] flex flex-col items-center justify-between">
-                            <div>
-                                <img src="{{ post.image.url }}" width="250" alt="foto" class="py-4 h-[15em]">
+                    <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                        <img src="{{ post.image.url }}" alt="JavaScript Blog Post" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <div class="flex items-center mb-3">
+                                <img src="{{ post.author.image.url }}" alt="foto" class="mr-1 rounded-full h-9 w-9">
+                                <p>{{ post.author.username | title }} <span class="text-gray-500">| {{ post.created_date }}</span></p>
                             </div>
-                            <div class="flex w-[85%]">
-                                <h3 class="text-3xl">{{ post.title }}</h3>
+                            <h2 class="text-xl font-bold text-gray-800 mb-1">{{ post.title }}</h2>
+                            <div class="text-gray-600 mb-5">
+                                <p>{{ post.content | safe|truncatechars:120 }}</p>
                             </div>
-                            <div class="flex w-[85%] py-4">
-                                <img src="{{ post.author.image.url }}" alt="foto" width="42">
-                                <div class="px-3">
-                                    <p>{{ post.author.username | title }}</p>
-                                    <p>{{ post.created_date }}</p>
-                                </div>
-                                <div class="flex justify-end w-20 text-red-500">
-                                    <span><i class="fa-regular fa-eye"></i> {{ post.get_view_count }}</span>
-                                </div>
-                            </div>
-                        </article>
-                    </a>
-                </div>
+                            <a href="{% url 'blog:detail' post.id %}" class="text-blue-600 hover:text-blue-800 font-semibold">Leer más →</a>
+                        </div>
+                    </article>
                 {% endfor %}
             </div>
-            <div class="min-h-[8.7vh] p-6 flex justify-center items-center">
-                <span class="px-14 p-5 space-x-6">
-                    {% if page_obj.has_previous %}
-                        <a href="?{{ request.GET.urlencode }}&page={{ page_obj.previous_page_number }}" class="py-2 px-5 bg-red-400 text-slate-50 rounded-md">Anterior</a>
-                    {% endif %}
-                    
-                    {% if page_obj.paginator.num_pages != 1 %}
-                        <span>
-                            {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
-                        </span>
-                    {% endif %}
-                    
-                    {% if page_obj.has_next %}
-                        <a href="?{{ request.GET.urlencode }}&page={{ page_obj.next_page_number }}" class="py-2 px-5 bg-red-400 text-slate-50 rounded-md">Siguiente</a>
-                    {% endif %}
-                </span>
+
+            <div class="flex justify-center items-center space-x-2 mt-12">
+                {% if page_obj.has_previous %}
+                    <a href="?{{ request.GET.urlencode }}&page={{ page_obj.previous_page_number }}" class="px-4 py-2 rounded-lg bg-gray-200 text-gray-600 hover:bg-gray-300">
+                        <i class="fas fa-chevron-left mr-2"></i>Anterior
+                    </a>
+                {% endif %}
+              
+                {% if page_obj.paginator.num_pages != 1 %}
+                    <span>
+                        {{ page_obj.number }} ... {{ page_obj.paginator.num_pages }}
+                    </span>
+                {% endif %}
+                
+                {% if page_obj.has_next %}
+                    <a href="?{{ request.GET.urlencode }}&page={{ page_obj.next_page_number }}" class="px-4 py-2 rounded-lg bg-gray-200 text-gray-600 hover:bg-gray-300">
+                        Siguiente<i class="fas fa-chevron-right ml-2"></i>
+                    </a>
+                {% endif %}
             </div>
-        </section>
+        </main>
+
         {% include 'layouts/partials/aside.html' %}
-    </main>
+    </div>    
 {% endblock content %}
