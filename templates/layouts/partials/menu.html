@@ -1,39 +1,60 @@
 {% load static %}
-<nav class="p-3 flex items-center bg-slate-50 shadow-lg shadow-gray-300">
-    <div class="flex space-x-11 w-1/2">
-        <h2 class="text-red-400 font-bold text-4xl mx-6"><a href="{% url 'blog:home' %}">Blog</a></h2>
-        <form class="flex" action="{% url 'blog:home' %}" method="GET">
-            <button type="submit" class="bg-red-400 text-slate-50 py-2 px-3 rounded-l-lg cursor-pointer">Buscar</button>
-            <input type="text" class="border-red-400 rounded-r-lg h-10" name="q">
-        </form>
+<nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="flex justify-between h-16">
+            <div class="flex items-center">
+               <a href="{%url 'blog:home' %}"><span class="ml-2 font-bold text-xl text-gray-800">CodeBlog</span></a>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-4">
+                <form class="relative" action="{% url 'blog:home' %}" method="GET">
+                    <input name="q" type="text" placeholder="Buscar publicación..." class="w-64 px-4 py-2 rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button type="submit"><i class="fas fa-search absolute right-3 top-3 text-gray-400"></i></button>
+                </form>
+                
+                {% if  user.is_authenticated %}
+                    <div class="flex text-gray-600">
+                        <a href="{%url 'blog:profile' %}"><button class="px-4 py-2  hover:text-gray-800"><i class="fas fa-user mr-2"></i>Perfil</button></a>
+                        <form action="{% url 'accounts:logout' %}" method="POST" class="hover:text-gray-800">
+                            {% csrf_token %}
+                            <input type="submit" value="Cerrar Sesión" class="cursor-pointer px-4 py-2">
+                        </form> 
+                    </div>      
+                {% endif %}
+                
+                {% if not user.is_authenticated %}
+                    <a href="{%url 'accounts:login' %}" class="px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700"><button >Iniciar Sesión</button></a>
+                    <a href="{%url 'accounts:register' %}" class="px-4 py-2 text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50"><button>Registrarse</button></a>
+                {% endif %}
+            </div>
+
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-button" class="text-gray-600 hover:text-gray-800">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
     </div>
-    <div class="w-1/2 flex justify-end">
-        <div class="mr-8 flex space-x-6">
+
+    <div id="mobile-menu" class="hidden md:hidden bg-white pb-4 px-4">
+        <div class="flex flex-col space-y-4">
+            <input type="text" placeholder="Search posts..." class="px-4 py-2 rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            
+            {% if  user.is_authenticated %}
+                <div class="text-gray-600">
+                    <button class="px-4 py-2 hover:text-gray-800"><i class="fas fa-user mr-2"></i>Perfil</button>
+                    <form action="{% url 'accounts:logout' %}" method="POST" class="hover:text-gray-800">
+                        {% csrf_token %}
+                        <input type="submit" value="Cerrar Sesión" class="cursor-pointer px-4 py-2">
+                    </form> 
+                </div>
+                
+            {% endif %}
+
             {% if not user.is_authenticated %}
-                <p class="text-red-400"><a href="{% url 'accounts:login' %}">Iniciar sesión</a></p>
-                <p><a href="{% url 'accounts:register' %}">Registrarse</a></p>
+                <a href="{%url 'accounts:login' %}" class="px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700"><button >Iniciar Sesión</button></a>
+                <a href="{%url 'accounts:register' %}" class="px-4 py-2 text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50"><button>Registrarse</button></a>
             {% endif %}
         </div>
-
-        {% if user.is_authenticated %}
-            <div class="mr-8 flex w-[22%] justify-between items-center">
-                <p><span class="text-red-400 mr-1">Bienvenido/a</span> {{ user.username | capfirst }}</p>
-                
-                <div class="relative ml-4 flex-shrink-0">
-                    
-                    <button type="button" id="user-menu-button" class="relative flex rounded-full focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2" aria-expanded="false" aria-haspopup="true">
-                        <img class="h-10 w-10 rounded-full" src="{{ user.image.url }}" alt="">
-                    </button>
-                    
-                    <div id="user-menu" class="hidden absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                        <a href="{% url 'blog:profile' %}" class="block px-4 py-2 text-sm hover:bg-red-400" role="menuitem" tabindex="-1">Tu perfil</a>
-                        <form action="{% url 'accounts:logout' %}" method="POST" class="hover:bg-red-400">
-                            {% csrf_token %}
-                            <input type="submit" value="Cerrar Sesión" class="cursor-pointer block px-4 py-2 text-sm">
-                        </form> 
-                    </div>
-                </div>
-            </div>    
-        {% endif %}
     </div>
 </nav>
