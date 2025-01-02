@@ -15,7 +15,7 @@ class HomeBlogView(ListView):
     model = Post
     template_name = 'blog/index.html'
     context_object_name = 'posts'  
-    paginate_by = 8 
+    paginate_by = 4 
 
     def get_queryset(self):
         queryset = Post.objects.filter(published=True).order_by('-id')
@@ -148,6 +148,7 @@ class ProfileUpdateView(UpdateView):
     def form_invalid(self, form):
         messages.error(self.request, '¡Hubo un error al actualizar tus datos de perfil. Por favor, inténtalo de nuevo!')
         return super().form_invalid(form)
+
 
 class ProfileListPostsView(ListView):
     model = Post
