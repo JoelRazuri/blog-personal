@@ -7,10 +7,10 @@ function changeButtonColor(btnId) {
     var otherHrId = (btnId === 'btn-personal-data') ? 'hr-personal-posts' : 'hr-personal-data';
     var otherHr = document.getElementById(otherHrId);
     
-    btn.classList.add("text-red-400");
-    otherBtn.classList.remove("text-red-400");
-    hr.classList.add("border-red-400");
-    otherHr.classList.remove("border-red-400");
+    btn.classList.add("text-blue-600");
+    otherBtn.classList.remove("text-blue-600");
+    hr.classList.add("border-blue-600");
+    otherHr.classList.remove("border-blue-600");
 
     sessionStorage.setItem('activeButton', btnId);
 }
@@ -26,9 +26,9 @@ window.onload = function() {
         var otherHrId = (activeButtonId === 'btn-personal-data') ? 'hr-personal-posts' : 'hr-personal-data';
         var otherHr = document.getElementById(otherHrId);
 
-        activeButton.classList.add("text-red-400");
-        otherButton.classList.remove("text-red-400");
-        activeHr.classList.add("border-red-400");
-        otherHr.classList.remove("border-red-400");
+        activeButton.classList.add("text-blue-600");
+        otherButton.classList.remove("text-blue-600");
+        activeHr.classList.add("border-blue-600");
+        otherHr.classList.remove("border-blue-600");
     }
 };
