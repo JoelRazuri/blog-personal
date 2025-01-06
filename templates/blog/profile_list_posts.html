@@ -2,9 +2,9 @@
 {% block title %}Publicaciones {% endblock title %}
 {% load static %}
 {% block content %}
-    <section class="h-[84.8vh] w-[75%] py-8 px-10 overflow-y-scroll">
+    <section class="h-[84.8vh] py-8 px-10 overflow-y-scroll">
         <div class="flex space-x-4">
-            <a href="{% url 'blog:create' %}" class="bg-red-400 max-h-12 hover:bg-red-500 text-white font-semibold py-3 px-4 shadow-lg rounded-md">Crear publicación</a>
+            <a href="{% url 'blog:create' %}" class="max-h-12 text-white bg-blue-600 rounded-lg hover:bg-blue-700 py-3 px-4 shadow-lg">Crear publicación</a>
             <div class="flex justify-center">
                 {% if messages %}
                     {% for message in messages %}
@@ -15,16 +15,16 @@
                 {% endif %}
             </div>
         </div>
-        <div class="grid grid-cols-2 gap-6 mt-5">
+        <div class="lg:grid lg:grid-cols-2 gap-6 mt-5 w-96 lg:w-auto">
             {% for post in posts  %}
-                <article class="bg-slate-50 flex shadow-lg h-28 justify-between">
+                <article class="bg-slate-50 flex shadow-lg h-28 justify-between mb-2">
                     <div class="flex">
                         <img src="{{ post.image.url }}" alt="" width="100" class="p-2">
                         <div class=" m-2">
-                            <h4 class="w-full pt-1 pb-2">{{ post.title }}</h4>
+                            <h4 class="w-full pt-1 pb-2 font-bold">{{ post.title|truncatechars:16 }}</h4>
                             <div class="flex space-x-3 mt-3 items-center">
                                 <img src="{{ user.image.url }}" alt="" class="rounded-full h-10 w-10">
-                                <div>
+                                <div class="text-sm md:text-base">
                                     <p>{{ post.author | title }}</p>
                                     <p>{{ post.created_date }}</p>
                                 </div>
@@ -32,7 +32,7 @@
                         </div>
                     </div>
                     
-                    <div class="flex flex-col m-2 justify-around">
+                    <div class="flex flex-col m-2 justify-around text-sm md:text-base">
                         <a href="{% url 'blog:detail' post.id %}" class="font-semibold">Ver</a>
                         <a href="{% url 'blog:update' post.id %}" class="text-[#169D00] font-semibold">Editar</a>
                         <a href="{% url 'blog:delete' post.id %}" class="text-[#ED0000] font-semibold">Eliminar</a>

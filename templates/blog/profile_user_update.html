@@ -2,35 +2,35 @@
 {% load static %}
 {% block title %}Perfil{% endblock title %}
 {% block content %}
-    <section class="h-[84.8vh] w-[75%] py-5">
+    <section class="md:h-[84.8vh] w-full md:w-[75%] py-5">
         <form action="{% url "blog:profile" %}" method="POST" enctype="multipart/form-data" class="h-[100%]">
             {% csrf_token %}
-            <div class="h-[50%] grid grid-cols-2 items-center justify-items-center p-10">
-                <div class="flex flex-col w-[85%]">
+            <div class="md:h-[50%] md:grid md:grid-cols-2 p-10">
+                <div class="flex flex-col w-96">
                     <label for="">Nombre:</label>
                     {{ form.first_name }}
                 </div>
-                <div class="flex flex-col w-[85%]">
+                <div class="flex flex-col w-96">
                     <label for="">Apellido:</label>
                     {{ form.last_name }}
                 </div>
-                <div class="flex flex-col w-[85%]">
+                <div class="flex flex-col w-96">
                     <label for="">Email:</label>
                     {{ form.email }}
                 </div>
-                <div class="content-admin flex flex-col w-[85%]">
+                <div class="content-admin flex flex-col w-96">
                     <label for="">Usuario:</label>
                     <input type="text" value="{{ user.username }}" disabled class="text-slate-500 cursor-not-allowed w-1/2"> 
                 </div>
-                <div class="flex flex-col w-[85%]">
+                <div class="flex flex-col w-96">
                     <label for="">Contraseña:</label>
                     {{ form.new_password1 }}
                 </div>
-                <div class="flex flex-col w-[85%]">
+                <div class="flex flex-col w-96">
                     <label for="">Repetir contraseña:</label>
                     {{ form.new_password2 }}
                 </div>
-                <div class="flex flex-col w-[85%] mt-1">
+                <div class="flex flex-col w-96">
                     <label for="">Foto de perfil:</label>
                     {{ form.image }}
                 </div>
@@ -38,14 +38,14 @@
             <div class="flex justify-center">
                 {% if messages %}
                     {% for message in messages %}
-                        <div class="py-2 px-4 mb-4 rounded-lg {% if message.tags == 'error' %}bg-red-200 text-red-800{% elif message.tags == 'success' %} bg-green-200 text-green-800{% elif message.tags == 'info' %} bg-yellow-200 text-yellow-700{% endif %}">
+                        <div class="py-2 px-4 mb-1 rounded-lg {% if message.tags == 'error' %}bg-red-200 text-red-800{% elif message.tags == 'success' %} bg-green-200 text-green-800{% elif message.tags == 'info' %} bg-yellow-200 text-yellow-700{% endif %}">
                             {{ message }}
                         </div>
                     {% endfor %}
                 {% endif %}
             </div>
-            <div class="h-[50%] flex justify-center items-center">
-                <button class="bg-red-400 hover:bg-red-500 text-white font-semibold py-3 px-14 shadow-lg shadow-gray-400 h-[6vh]" type="submit">Modificar</button>
+            <div class="flex mt-4 justify-center items-center">
+                <button class="text-white bg-blue-600 rounded-lg hover:bg-blue-700 font-semibold py-3 px-14 shadow-lg shadow-gray-400 h-[6vh]" type="submit">Modificar</button>
             </div>
         </form>
     </section>
