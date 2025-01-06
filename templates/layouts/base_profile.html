@@ -9,27 +9,29 @@
     {% tailwind_css %}
     <title>{% block title %}{% endblock title %}</title>
 </head>
-<body class="bg-red-50 flex flex-col">
-    {% include 'layouts/partials/menu.html' %}
+<body class="bg-gray-50">
+    {% include 'layouts/partials/navbar.html' %}
     
-    <main class="flex px-10 items-center">
-        <aside class="h-[80.5vh] w-[25%] flex flex-col py-3 bg-[#8181811A] shadow-lg">
-            <div class="h-[50%] flex justify-center items-center">
-                <img src="{{ user.image.url }}" alt="foto de perfil" width="220px" class="rounded-full">
-            </div>
-            <div class="h-[50%] flex flex-col px-4">
-                <div class="py-5">
-                    <a id="btn-personal-data" href="{% url 'blog:profile' %}" onclick="changeButtonColor('btn-personal-data')"><p class="font-semibold text-3xl py-3">Datos personales</p></a>
-                    <hr id="hr-personal-data" class="border-black">
+    <div class="max-w-7xl mx-auto px-4 pt-24 pb-12 flex flex-col lg:flex-row">
+        <main class="flex flex-col md:flex-row px-2 items-center">
+            <aside class="flex md:flex-col  md:h-[80.5vh] w-full md:w-[25%] py-3 bg-[#8181811A] shadow-lg items-center rounded-lg">
+                <div class="w-[35%] md:w-[50%] md:h-[50%] flex justify-center items-center">
+                    <img src="{{ user.image.url }}" alt="foto de perfil" width="220px" class="rounded-full">
                 </div>
-                <div class="py-5">
-                    <a id="btn-personal-posts" href="{% url 'blog:profile_posts' %}" onclick="changeButtonColor('btn-personal-posts')"><p class="font-semibold text-3xl py-3">Publicaciones</p></a>
-                    <hr id="hr-personal-posts" class="border-black">
+                <div class="w-[65%] md:h-[50%] flex flex-col px-4">
+                    <div class="py-5">
+                        <a id="btn-personal-data" href="{% url 'blog:profile' %}" onclick="changeButtonColor('btn-personal-data')"><p class="font-semibold text-xl md:text-3xl py-3">Datos personales</p></a>
+                        <hr id="hr-personal-data" class="border-black">
+                    </div>
+                    <div class="py-5">
+                        <a id="btn-personal-posts" href="{% url 'blog:profile_posts' %}" onclick="changeButtonColor('btn-personal-posts')"><p class="font-semibold text-xl md:text-3xl py-3">Publicaciones</p></a>
+                        <hr id="hr-personal-posts" class="border-black">
+                    </div>
                 </div>
-            </div>
-        </aside>
-    {% block content %}{% endblock content %}
-    </main>
+            </aside>
+            {% block content %}{% endblock content %}
+        </main>
+    </div>
     {% include 'layouts/partials/footer.html' %}
     <script src="{% static 'blog/js/menu.js' %}"></script>
     <script src="{% static 'blog/js/buttonColor.js' %}"></script>
