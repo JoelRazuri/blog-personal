@@ -3,15 +3,15 @@
 {% block title %}Registrarse{% endblock title %}
 
 {% block content %}
-    <main class="bg-red-50">
-        <div class="min-h-screen flex flex-col">
-            <div class="w-screen pt-28 mb-6 flex justify-center">
+    <main>
+        <div class="min-h-screen flex flex-col justify-center">
+            <div class="w-screen flex justify-center">
                 <h2 class="font-bold text-3xl">Crea tu cuenta</h2>
             </div>
             <div class="p-10">
                 <form action="{% url 'accounts:register' %}" method="POST">
                     {% csrf_token %}
-                    <div class="flex flex-col p-9 items-center">
+                    <div class="flex flex-col p-7 items-center">
                         <div class="mb-6 w-1/2 flex justify-center">
                             {{ form.username }}
                         </div>
@@ -44,7 +44,7 @@
                         {% endif %}
                     </div>
                     <div class="flex justify-center">
-                        <button class="bg-red-400 hover:bg-red-500 text-white font-semibold py-3 px-14 shadow-lg shadow-gray-400" type="submit">Crear cuenta</button>
+                        <button class="text-white bg-blue-600 rounded-lg hover:bg-blue-700 font-semibold py-3 px-14 shadow-lg shadow-gray-400" type="submit">Crear cuenta</button>
                     </div>
                 </form> 
             </div>
