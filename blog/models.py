@@ -17,13 +17,10 @@ class Post(models.Model):
     
     @property
     def get_view_count(self):
-        return self.postview_set.all().count()
+        return self.postview_set.count()
 
 
 
 class PostView(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, verbose_name='Autor', null=True, blank=True)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.user.username
+    
