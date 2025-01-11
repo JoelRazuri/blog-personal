@@ -57,8 +57,7 @@ class DetailPostView(DetailView):
 
     def get_object(self, **kwargs):
         post = super().get_object(**kwargs)
-        if self.request.user.is_authenticated:
-            PostView.objects.get_or_create(user=self.request.user, post=post)
+        PostView.objects.create(post=post)
         return post
 
     def get_context_data(self, **kwargs):
