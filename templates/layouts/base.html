@@ -12,7 +12,9 @@
 <body class="bg-gray-50">
     {% include 'layouts/partials/navbar.html' %}
     
-    {% block content %}{% endblock content %}
+    <main class="max-w-7xl mx-auto px-4 pt-24 pb-12 flex flex-col lg:flex-row gap-8 min-h-[79.1vh]">
+        {% block content %}{% endblock content %}
+    </main>
 
     {% include 'layouts/partials/footer.html' %}
     <script src="{% static 'blog/js/menu.js' %}"></script>
