@@ -2,58 +2,58 @@
 
 {% block title %}Detalle del Publicación{% endblock title %}
 
-{% block content %}
 {% load static %}
-    <div class="max-w-7xl mx-auto px-0 pt-24 pb-12 flex flex-col lg:flex-row">
-        <main class="lg:w-3/4">
-            <div class="px-10 pb-3">
-                <h2 class="font-semibold text-slate-900 text-6xl py-4 mb-2">{{ post.title }}</h2>
-                <div class="flex items-center">
-                    <img src="{{ post.author.image.url }}" alt="foto" class="mr-1 rounded-full h-9 w-9">
-                    <p>{{ post.author.username | title }} <span class="text-gray-500">| {{ post.created_date }}</span></p>
-                </div>
+{% block content %}
+    <section class="lg:w-3/4">
+        <div class="px-10 pb-3">
+            <h2 class="font-semibold text-slate-900 text-6xl py-4 mb-2">{{ post.title }}</h2>
+            <div class="flex items-center">
+                <img src="{{ post.author.image.url }}" alt="foto" class="mr-1 rounded-full h-9 w-9">
+                <p>{{ post.author.username | title }} <span class="text-gray-500">| {{ post.created_date }}</span></p>
             </div>
+        </div>
 
-            <section class="flex">
-                <div class="w-[100%] lg:w-[90%] flex flex-col">
-                    <section class="px-10">
-                        <img src="{{ post.image.url }}" alt="foto del post" class=" h-[40em] w-full mb-3">
-                        <div class="text-gray-600">
-                            <span><i class="fa-regular fa-eye"></i> {{ post.get_view_count }}</span>  
-                        </div>
-                        <div class="text-gray-600">
-                            <p class="py-2">{{ post.content | safe }}</p>
-                        </div>
-                        <div class="py-5">
-                            <hr class=" border-gray-400">
-                        </div>
-                    </section>
+        <section class="flex">
+            <div class="w-[100%] lg:w-[90%] flex flex-col">
+                <section class="px-10">
+                    <img src="{{ post.image.url }}" alt="foto del post" class=" h-[40em] w-full mb-3">
+                    <div class="text-gray-600">
+                        <span><i class="fa-regular fa-eye"></i> {{ post.get_view_count }}</span>  
+                    </div>
+                    <div class="text-gray-600">
+                        <p class="py-2">{{ post.content | safe }}</p>
+                    </div>
+                    <div class="py-5">
+                        <hr class=" border-gray-400">
+                    </div>
+                </section>
 
-                    <section class="px-10 pb-2">
-                        <h2 class="py-4 font-semibold text-4xl">Más Publicaciones</h2>
-                        <div class="flex flex-col lg:flex-row">
-                            {% for related_post in related_posts  %}
-                                <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 w-64">
-                                    <img src="{{ related_post.image.url }}" alt="JavaScript Blog Post" class="w-full h-48 object-cover">
-                                    <div class="p-6">
-                                        <div class="flex items-center mb-3">
-                                            <img src="{{ related_post.author.image.url }}" alt="foto" class="mr-1 rounded-full h-9 w-9">
-                                            <p>{{ related_post.author.username | title }} <span class="text-gray-500">| {{ related_post.created_date }}</span></p>
-                                        </div>
-                                        <h2 class="text-xl font-bold text-gray-800 mb-1">{{ related_post.title }}</h2>
-                                        <div class="text-gray-600 mb-5">
-                                            <p>{{ related_post.content | safe|truncatechars:48 }}</p>
-                                        </div>
-                                        <a href="{% url 'blog:detail' related_post.id %}" class="text-blue-600 hover:text-blue-800 font-semibold">Leer más →</a>
+                <section class="px-10 pb-2">
+                    <h2 class="py-4 font-semibold text-4xl">Más Publicaciones</h2>
+                    <div class="flex flex-col lg:flex-row">
+                        {% for related_post in related_posts  %}
+                            <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 w-64">
+                                <img src="{{ related_post.image.url }}" alt="JavaScript Blog Post" class="w-full h-48 object-cover">
+                                <div class="p-6">
+                                    <div class="flex items-center mb-3">
+                                        <img src="{{ related_post.author.image.url }}" alt="foto" class="mr-1 rounded-full h-9 w-9">
+                                        <p>{{ related_post.author.username | title }} <span class="text-gray-500">| {{ related_post.created_date }}</span></p>
                                     </div>
-                                </article>
-                            {% empty %}
-                                <p class="py-3 text-gray-600">No hay posteos relacionados.</p>
-                            {% endfor %}
-                        </div>  
-                    </section>
-                </div>
-            </main>
-            {% include 'layouts/partials/aside.html' %}
-    </div>
+                                    <h2 class="text-xl font-bold text-gray-800 mb-1">{{ related_post.title }}</h2>
+                                    <div class="text-gray-600 mb-5">
+                                        <p>{{ related_post.content | safe|truncatechars:48 }}</p>
+                                    </div>
+                                    <a href="{% url 'blog:detail' related_post.id %}" class="text-blue-600 hover:text-blue-800 font-semibold">Leer más →</a>
+                                </div>
+                            </article>
+                        {% empty %}
+                            <p class="py-3 text-gray-600">No hay posteos relacionados.</p>
+                        {% endfor %}
+                    </div>  
+                </section>
+            </div>
+        </section>
+    </section>
+
+        {% include 'layouts/partials/aside.html' %}
 {% endblock content %}
