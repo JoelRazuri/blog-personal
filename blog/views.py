@@ -102,14 +102,6 @@ class DeletePostView(DeleteView):
         return context
 
 
-class InfoBlogView(TemplateView):
-    template_name = 'blog/info_blog.html'
-
-
-
-class ContactBlogView(TemplateView):
-    template_name = 'blog/contact_blog.html'
-
 
 class Error404View(TemplateView):
     template_name = 'layouts/error_404.html'
