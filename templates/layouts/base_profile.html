@@ -13,26 +13,26 @@
 <body class="bg-gray-50">
     {% include 'layouts/partials/navbar.html' %}
     
-    <div class="max-w-7xl mx-auto px-4 pt-24 pb-12 flex flex-col lg:flex-row">
-        <main class="flex flex-col md:flex-row px-2 items-center">
-            <aside class="flex md:flex-col  md:h-[80.5vh] w-full md:w-[25%] py-3 bg-[#8181811A] shadow-lg items-center rounded-lg">
+    <main class="max-w-7xl mx-auto px-4 pt-24 pb-12 flex flex-col lg:flex-row">
+        <div class="flex flex-col lg:flex-row px-2 items-center">
+            <aside class="flex lg:flex-col lg:h-[80.5vh] py-3 bg-[#8181811A] shadow-lg items-center rounded-lg">
                 <div class="w-[9em] mx-1 md:w-[9em] md:h-[50%] flex justify-center items-center">
                     <img src="{{ user.image.url }}" alt="foto de perfil" class="rounded-full">
                 </div>
-                <div class="w-[65%] md:h-[50%] flex flex-col mx-1">
+                <div class="w-[65%] lg:h-[50%] flex flex-col mx-1">
                     <div class="py-5">
-                        <a id="btn-personal-data" href="{% url 'blog:profile' %}" onclick="changeButtonColor('btn-personal-data')"><p class="font-semibold text-xl md:text-3xl py-3">Datos personales</p></a>
+                        <a id="btn-personal-data" href="{% url 'blog:profile' %}" onclick="changeButtonColor('btn-personal-data')"><p class="font-semibold text-xl md:text-2xl lg:text-3xl py-3">Datos personales</p></a>
                         <hr id="hr-personal-data" class="border-black">
                     </div>
                     <div class="py-5">
-                        <a id="btn-personal-posts" href="{% url 'blog:profile_posts' %}" onclick="changeButtonColor('btn-personal-posts')"><p class="font-semibold text-xl md:text-3xl py-3">Publicaciones</p></a>
+                        <a id="btn-personal-posts" href="{% url 'blog:profile_posts' %}" onclick="changeButtonColor('btn-personal-posts')"><p class="font-semibold text-xl md:text-2xl lg:text-3xl py-3">Publicaciones</p></a>
                         <hr id="hr-personal-posts" class="border-black">
                     </div>
                 </div>
             </aside>
             {% block content %}{% endblock content %}
-        </main>
-    </div>
+        </div>
+    </main>
     {% include 'layouts/partials/footer.html' %}
     <script src="{% static 'blog/js/menu.js' %}"></script>
     <script src="{% static 'blog/js/buttonColor.js' %}"></script>
