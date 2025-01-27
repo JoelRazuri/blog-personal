@@ -18,9 +18,9 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
 application = get_wsgi_application()
 
 # Aplica las migraciones automáticamente
-try:
-    django.setup()  # Configura Django antes de usar comandos de administración
-    call_command('migrate', interactive=False)
-    print("Migraciones aplicadas correctamente.")
-except Exception as e:
-    print(f"Error al aplicar migraciones: {e}")
+# try:
+#     django.setup()  # Configura Django antes de usar comandos de administración
+#     call_command('migrate', interactive=False)
+#     print("Migraciones aplicadas correctamente.")
+# except Exception as e:
+#     print(f"Error al aplicar migraciones: {e}")
