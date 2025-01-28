@@ -38,8 +38,10 @@
 
     <div id="mobile-menu" class="hidden md:hidden bg-white pb-4 px-4">
         <div class="flex flex-col space-y-4">
-            <input type="text" placeholder="Buscar publicación..." class="px-4 py-2 rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <button type="submit"><i class="fas fa-search absolute right-3 top-3 text-gray-400"></i></button>
+            <form class="relative" action="{% url 'blog:home' %}" method="GET">
+                <input type="text" placeholder="Buscar publicación..." class="px-4 py-2 rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <button type="submit"><i class="fas fa-search absolute right-3 top-3 text-gray-400"></i></button>
+            </form>
             {% if  user.is_authenticated %}
                 <div class="text-gray-600">
                     <a href="{%url 'blog:profile' %}"><button class="px-4 py-2 hover:text-gray-800"><i class="fas fa-user mr-2"></i>Perfil</button></a>
