@@ -183,6 +183,6 @@ AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'blog-personal-media'
 AWS_S3_REGION_NAME = 'us-east-2'  # Cambia a tu región si es diferente
 AWS_QUERYSTRING_AUTH = False  # Hace que las URL sean públicas
-AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com/media_root"
+AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com/"
 
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/'
