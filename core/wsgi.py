@@ -19,7 +19,14 @@ application = get_wsgi_application()
 
 # Aplica las migraciones automáticamente
 try:
-    django.setup()  # Configura Django antes de usar comandos de administración
+    # Configura Django antes de usar comandos de administración
+    django.setup()
+
+    # Genera migraciones
+    call_command('makemigrations', interactive=False)
+    print("Migraciones creadas correctamente.")
+
+    # Aplica las migraciones
     call_command('migrate', interactive=False)
     print("Migraciones aplicadas correctamente.")
 except Exception as e:
