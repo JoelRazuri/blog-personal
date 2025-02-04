@@ -167,9 +167,16 @@ CKEDITOR_CONFIGS = {
     },
 }
 
+
+# Desarrollo
+# SECURE_SSL_REDIRECT = False
+# SESSION_COOKIE_SECURE = False
+# CSRF_COOKIE_SECURE = False
+# ACCOUNT_DEFAULT_HTTP_PROTOCOL = "http"
+
 CSRF_TRUSTED_ORIGINS = ['https://*.onrender.com']
 
-
+# Produccion
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
