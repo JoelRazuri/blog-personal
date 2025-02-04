@@ -7,7 +7,7 @@
         Con el atributo 'enctype="multipart/form-data"' Debemos indicar en el formulario que vamos a subir un archivo de 
         este modo, o de lo contrario recibiremos un error de validación diciéndonos que el campo está vacío. 
     {% endcomment %}
-    <section class="h-[84.8vh] w-[75%] py-5">
+    <section class="h-[84.8vh] py-5">
         <form action="{% url 'blog:create' %}" method="POST" enctype="multipart/form-data" class="h-[100%]">
             {% csrf_token %}
             <div class="h-[80%] flex flex-col justify-center items-center space-y-6">
@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="h-[20%] flex justify-center items-center">
-                <button class="bg-red-400 hover:bg-red-500 text-white font-semibold py-3 px-14 shadow-lg shadow-gray-400 h-[6vh]" type="submit">Agregar</button>
+                <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-14 shadow-lg shadow-gray-400 h-[6vh]" type="submit">Agregar</button>
             </div>
         </form>
     </section>
