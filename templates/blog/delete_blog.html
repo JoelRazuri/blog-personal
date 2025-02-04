@@ -3,7 +3,7 @@
 {% block title %}Borrado del Post{% endblock title %}
 
 {% block content %}
-<section class="h-[84.8vh] w-[75%] py-5 flex flex-col justify-center items-center space-y-6">
+<section class="h-[84.8vh] px-10 py-5 flex flex-col justify-center items-center space-y-6">
     <h2 class="text-4xl">Seguro deseas borrar el post "{{ post.title }}"?</h2>
     <div class="flex space-x-5">
         <a href="{% url 'blog:profile_posts' %}" class="text-xl">Cancelar</a>
