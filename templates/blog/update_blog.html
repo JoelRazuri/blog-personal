@@ -3,8 +3,8 @@
 {% block title %}Actualizar Publicación{% endblock title %}
 
 {% block content %}
-    <section class="h-[84.8vh] w-[75%] py-5">
-        <form action="{% url 'blog:update' post.id %}" method="POST"class="h-[100%]">
+    <section class="h-[84.8vh] py-5">
+        <form action="{% url 'blog:update' post.id %}" method="POST" enctype="multipart/form-data" class="h-[100%]">
             {% csrf_token %}
             <div class="h-[90%] w-full flex flex-col justify-center items-center space-y-3">
                 <div class="w-1/2">
@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="h-[10%] flex justify-center items-center mt-2">
-                <button class="bg-red-400 hover:bg-red-500 text-white font-semibold py-3 px-14 shadow-lg shadow-gray-400 h-[6vh]" type="submit">Actualizar</button>
+                <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-14 shadow-lg shadow-gray-400 h-[6vh]" type="submit">Actualizar</button>
             </div>
         </form>
     </section>
