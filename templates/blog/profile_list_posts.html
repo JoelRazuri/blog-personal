@@ -2,7 +2,7 @@
 {% block title %}Publicaciones {% endblock title %}
 {% load static %}
 {% block content %}
-    <section class="h-[84.8vh] py-8 px-10 overflow-y-scroll">
+    <section class="h-[84.8vh] py-8 px-10 overflow-y-auto">
         <div class="flex space-x-4">
             <a href="{% url 'blog:create' %}" class="max-h-12 text-white bg-blue-600 rounded-lg hover:bg-blue-700 py-3 px-4 shadow-lg">Crear publicación</a>
             <div class="flex justify-center">
@@ -19,7 +19,7 @@
             {% for post in posts  %}
                 <article class="bg-slate-50 flex shadow-lg h-28 justify-between mb-2">
                     <div class="flex">
-                        <img src="{{ post.image.url }}" alt="" width="100" class="p-2">
+                        <img src="{{ post.image.url }}" alt="" width="100" class="p-2 object-cover">
                         <div class=" m-2">
                             <h4 class="w-full pt-1 pb-2 font-bold">{{ post.title|truncatechars:16 }}</h4>
                             <div class="flex space-x-3 mt-3 items-center">
