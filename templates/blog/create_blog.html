@@ -7,26 +7,25 @@
         Con el atributo 'enctype="multipart/form-data"' Debemos indicar en el formulario que vamos a subir un archivo de 
         este modo, o de lo contrario recibiremos un error de validación diciéndonos que el campo está vacío. 
     {% endcomment %}
-    <section class="h-[84.8vh] py-5">
-        <form action="{% url 'blog:create' %}" method="POST" enctype="multipart/form-data" class="h-[100%]">
+    <section class="py-5">
+        <form action="{% url 'blog:create' %}" method="POST" enctype="multipart/form-data" class="flex flex-col justify-center items-center space-y-6">
             {% csrf_token %}
-            <div class="h-[80%] flex flex-col justify-center items-center space-y-6">
-                <div class="w-1/2">
-                    {{ form.title.label }}:
-                    {{ form.title }}
-                </div>
-                <div class="w-1/2">
-                    {{ form.content.label }}:
-                    {{ form.content }}
-                </div>
-                <div>
-                    {{ form.image.label }}:
-                    {{ form.image }}
-                </div>
+    
+            <div class="w-[90vw] md:w-[80vw] lg:w-1/2">
+                {{ form.title.label }}:
+                {{ form.title }}
             </div>
-            <div class="h-[20%] flex justify-center items-center">
-                <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-14 shadow-lg shadow-gray-400 h-[6vh]" type="submit">Agregar</button>
+            <div class="w-[90vw] md:w-[80vw] lg:w-1/2">
+                {{ form.content.label }}:
+                {{ form.content }}
             </div>
+            <div>
+                {{ form.image.label }}:
+                {{ form.image }}
+            </div>
+        
+            <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-14 shadow-lg shadow-gray-400 h-[6vh]" type="submit">Agregar</button>
+            
         </form>
     </section>
 {% endblock content %}
