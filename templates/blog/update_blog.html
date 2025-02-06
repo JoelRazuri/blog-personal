@@ -1,7 +1,7 @@
 {% extends 'layouts/base_profile.html' %}
 
 {% block title %}Actualizar Publicación{% endblock title %}
-
+{% load static %}
 {% block content %}
     <section class="py-5">
         <form action="{% url 'blog:update' post.id %}" method="POST" enctype="multipart/form-data" class="flex flex-col justify-center items-center space-y-3">
