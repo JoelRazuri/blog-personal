@@ -165,13 +165,8 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 
 CKEDITOR_CONFIGS = {
     'default': {
-        'height': '300px',
-        'width': '100%',
-        'toolbar_Full': [
-            ['Styles', 'Format', 'Bold', 'Italic', 'Link'],
-            ['NumberedList', 'BulletedList', 'Blockquote'],
-            ['Image', 'Table', 'CodeSnippet']
-        ],
+        'height': 'auto',
+        'width': '100%'
     },
 }
 
