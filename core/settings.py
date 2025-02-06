@@ -50,7 +50,7 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"
+# NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"
 
 # MIDDLEWARE
 MIDDLEWARE = [
@@ -146,11 +146,14 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 
-STATICFILES_DIRS = [ BASE_DIR / "static",]
+STATICFILES_DIRS = [ 
+    BASE_DIR / "static",
+    BASE_DIR / "ckeditor/static",  # Ruta de CKEditor
+]
 STATIC_ROOT =  BASE_DIR / "static_root"
 MEDIA_ROOT =  BASE_DIR / "media_root"
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -162,8 +165,13 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 
 CKEDITOR_CONFIGS = {
     'default': {
-        'heigth': 'auto',
-        'resize_enabled': False,
+        'height': '300px',
+        'width': '100%',
+        'toolbar_Full': [
+            ['Styles', 'Format', 'Bold', 'Italic', 'Link'],
+            ['NumberedList', 'BulletedList', 'Blockquote'],
+            ['Image', 'Table', 'CodeSnippet']
+        ],
     },
 }
 
