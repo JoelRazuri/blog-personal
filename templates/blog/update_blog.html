@@ -17,13 +17,13 @@
                 {{ form.content }}
             </div>
             
-            <div class="self-start lg:self-center">
-                <label for="">Actual:</label>
-                <img src="{{ post.image.url }}" alt="" width="200px">
+            <div class="flex self-start lg:self-center">
+                <label for="" class="mr-2">Actual:</label>
+                <img src="{{ post.image.url }}" alt="" width="100px">
             </div>
 
             <div class="self-start lg:self-center">
-                <label for="">Cambiar:</label>
+                <label for="" class="mr-2">Cambiar:</label>
                 {{ form.image }}
             </div>
             
