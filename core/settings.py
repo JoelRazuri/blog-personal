@@ -165,8 +165,9 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 
 CKEDITOR_CONFIGS = {
     'default': {
-        'height': 'auto',
-        'width': '100%'
+        'height': '33vh',
+        'width': '100%',
+        'resize_enabled': False,
     },
 }
 
