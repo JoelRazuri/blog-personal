@@ -11,19 +11,19 @@
                 {{ form.title.label }}:
                 {{ form.title }}
             </div>
-            
+
             <div class="w-[90vw] md:w-[80vw] lg:w-1/2">
                 {{ form.content.label }}:
                 {{ form.content }}
             </div>
             
-            <div class="flex self-start lg:self-center">
+            <div class="flex self-start lg:self-center w-[27.1em]">
                 <label for="" class="mr-2">Actual:</label>
                 <img src="{{ post.image.url }}" alt="" width="100px">
             </div>
 
             <div class="self-start lg:self-center">
-                <label for="" class="mr-2">Cambiar:</label>
+                <label for="" class="mr-1">Cambiar:</label>
                 {{ form.image }}
             </div>
             
