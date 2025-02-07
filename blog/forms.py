@@ -9,6 +9,6 @@ class PostForm(ModelForm):
         fields = ('title', 'content', 'image')
         widgets = {
             'title': forms.TextInput(attrs={'class': 'w-full'}),
-            'content': forms.Textarea(attrs={'placeholder': 'contenido', 'class': 'w-full h-[20vw] resize-none'}),
+            'content': forms.Textarea(),
             'image': forms.FileInput(),
         }
