@@ -7,15 +7,15 @@ from django import forms
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(
         required=True, 
-        widget=forms.EmailInput(attrs={'placeholder': 'correo electrónico', 'class': 'w-1/2'})
+        widget=forms.EmailInput(attrs={'placeholder': 'correo electrónico'})
         )
     
     password1 = forms.CharField(
         strip=False,
-        widget=forms.PasswordInput(attrs={'placeholder': 'contraseña', 'class': 'w-1/2'}),
+        widget=forms.PasswordInput(attrs={'placeholder': 'contraseña'}),
     )
     password2 = forms.CharField(
-        widget=forms.PasswordInput(attrs={'placeholder': 'repetir contraseña', 'class': 'w-1/2'}),
+        widget=forms.PasswordInput(attrs={'placeholder': 'repetir contraseña'}),
         strip=False,
     )
 
@@ -23,20 +23,20 @@ class CustomUserCreationForm(UserCreationForm):
         model = CustomUser
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
         widgets = {
-            'username': forms.TextInput(attrs={'placeholder': 'nombre de usuario', 'class': 'w-1/2'}),
-            'first_name': forms.TextInput(attrs={'placeholder': 'nombre', 'class': 'w-1/2'}),
-            'last_name': forms.TextInput(attrs={'placeholder': 'apellido', 'class': 'w-1/2'}),
+            'username': forms.TextInput(attrs={'placeholder': 'nombre de usuario'}),
+            'first_name': forms.TextInput(attrs={'placeholder': 'nombre'}),
+            'last_name': forms.TextInput(attrs={'placeholder': 'apellido'}),
         }
 
 
 class CustomUserUpdateForm(forms.ModelForm):
     new_password1 = forms.CharField(
         strip=False,
-        widget=forms.PasswordInput(attrs={'placeholder': 'Nueva contraseña', 'class': 'w-1/2'}),
+        widget=forms.PasswordInput(attrs={'placeholder': 'Nueva contraseña'}),
         required=False,
     )
     new_password2 = forms.CharField(
-        widget=forms.PasswordInput(attrs={'placeholder': 'Repetir nueva contraseña', 'class': 'w-1/2'}),
+        widget=forms.PasswordInput(attrs={'placeholder': 'Repetir nueva contraseña'}),
         strip=False,
         required=False,
     )
@@ -44,9 +44,9 @@ class CustomUserUpdateForm(forms.ModelForm):
         model = CustomUser
         fields = ['first_name', 'last_name', 'email', 'image']
         widgets = {
-            'first_name': forms.TextInput(attrs={'class': 'w-1/2'}),
-            'last_name': forms.TextInput(attrs={'class': 'w-1/2'}),
-            'email': forms.EmailInput(attrs={'class': 'w-1/2'}),
+            'first_name': forms.TextInput(),
+            'last_name': forms.TextInput(),
+            'email': forms.EmailInput(),
             'image': forms.FileInput(),
         }
     
